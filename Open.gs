@@ -1,3 +1,16 @@
+// Googleスプレッドシートの表示時イベント
+function onOpen() {
+  // 独自メニューを追加
+  SpreadsheetApp
+    .getActiveSpreadsheet()
+    .addMenu('追加機能', [
+      {name: 'フォームの回答データをコピー', functionName: 'copyForm'},
+    ]);
+    
+   // フォームのコピー処理を実行
+   copyForm();
+}
+
 // Googleフォームで回答されたデータを参照用のシートにコピーする
 // 回答されるとデータの挿入がされるため、最新の回答データが参照先シートで表示されなくなるため
 // 回答データを参照先シートにコピーする処理
