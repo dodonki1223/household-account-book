@@ -131,3 +131,71 @@ Sheet名を `フォームの回答` に変更しておいてください
 下記の画像のようになっていればOKです
 
 ![this_month_expense_sheet_sample](./images/this_month_expense_sheet.png)
+
+### 今月出費シートにグラフを追加する
+
+下記のような感じで科目ごとのグラフを追加します  
+全部設定する必要はなく、自分が欲しいものだけ追加すると良いでしょう
+
+![graphs_sample](./images/graphs.png)
+
+グラフを追加したらURLの公開設定を行います  
+グラフの右上をクリックして `グラフを公開` を押しリンクで設定します
+
+![graph_release_sample](./images/graph_release.png)
+
+## 一旦、ウェブアプリケーションとして公開する
+
+スクリプトエディタからウェブアプリケーションとして公開します
+
+![release_web_application_sample](./images/release_web_application.png)
+
+## LINE BOTの作成
+
+LINEのエンジニアの方が書かれている記事を參考にMessaging APIの作成を行って下さい。
+
+- [LINEのBot開発 超入門（前編） ゼロから応答ができるまで - Qiita](https://qiita.com/nkjm/items/38808bbc97d6927837cd)  
+
+LINEのアクセストークンが必要なのでメモしておいて下さい。  
+`BOT`の作成は必要ないので作成しなくて大丈夫です。`BOT` 本体はGoogleスプレッドシートになります
+
+`Webhook URL` の接続確認だけしておいてください
+
+## 設定情報をセットする
+
+LINEのアクセストークン、今月出費シートのURL、GoogleフォームのURLを `Config.gs` ファイルに設定します
+
+```javascript
+// LineAccessToken         ：LINE developersのメッセージ送受信設定に記載のアクセストークン
+// LinePostUrl             ：LINE Messaging APIのURL
+// HouseholdAccountBookUrl ：家計簿のURL
+// FormUrl                 ：家計簿入力用のURL
+var config = {
+  LineAccessToken         : 'Lineのアクセストークン',
+  LinePostUrl             : 'https://api.line.me/v2/bot/message/reply',
+  HouseholdAccountBookUrl : 'Googleスプレッドシートの今月の支出シートURL',
+  FormUrl                 : 'GoogleフォームのURL'
+};
+```
+
+グラフのURLを `Chart.gs` ファイルに設定します
+
+```javascript
+// グラフの存在する項目のURLリスト
+// Base64で取得する方法もあるがめんどいので今回は固定値で対応する
+// https://developers.google.com/apps-script/reference/charts
+var ChartList = {
+  食費  : '食費グラフURL',
+  日用品: '日用品のURL',
+  交通費: '交通費のURL',
+  通信費: '通信費のURL',
+  洋服代: '洋服代のURL',
+  娯楽費: '娯楽費のURL'
+}
+```
+
+再度、ウェブアプリケーションとして公開すれば完成です
+
+# その他
+
+いくつかその他にも機能がありますが、細かい機能についてはソースを読んでください
