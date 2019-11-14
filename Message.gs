@@ -10,7 +10,8 @@ function paymentInfo(subjectName) {
                     '１ヶ月合計：' + numberToJPYFormat(getNowStatusValues(index)[0][0]) + '\n' +
                     '１日の平均：' + numberToJPYFormat(getNowStatusValues(index)[1][0]) + '\n' +
                     '１週間平均：' + numberToJPYFormat(getNowStatusValues(index)[2][0]) + '\n' +
-                    '今月の予測：' + numberToJPYFormat(getNowStatusValues(index)[3][0]);
+                    '今月の予測：' + numberToJPYFormat(getNowStatusValues(index)[3][0]) + '\n' +
+                    '先月費差異：' + numberToJPYFormat(getNowStatusValues(index)[4][0]);
                     
   // 本当は画像送信メッセージを使用したいがグラフの公開URLがCanvasで描かれているため使用出来ず……Orz
   return isExistsChart(subjectName) ? paymentInfo + '\n\n' + ChartList[subjectName] : paymentInfo;
