@@ -5,16 +5,27 @@
  */
 function paymentInfo(subjectName) {
   var index = getTargetSubjectIndex(subjectName);
-  var paymentInfo = '★今月の' + subjectName + '★' + '\n\n' +
+
+  var isBelowForLastMonth = getNowStatusValues(index)[4][0] < 0
+  var belowMessage = isBelowForLastMonth ? 'いい調子だ！\n先月より安いぞ😍' : 'ふーむ🤔\n先月よりも使い込んでいるな😭\n気合を入れろ！'
+
+  // 本当は画像送信メッセージを使用したいがグラフの公開URLがCanvasで描かれているため使用出来ず……Orz
+  var chartMessage = isExistsChart(subjectName) ? '\n' + 'グラフを出しとくね🙄' + '\n\n' +ChartList[subjectName] : '';
+
+  var paymentInfo = '⭐今月の' + subjectName + '⭐ ' + '\n\n' +
                     '本日支出額：' + numberToJPYFormat(getTodayStatus(index)) + '\n' +
                     '１ヶ月合計：' + numberToJPYFormat(getNowStatusValues(index)[0][0]) + '\n' +
                     '１日の平均：' + numberToJPYFormat(getNowStatusValues(index)[1][0]) + '\n' +
                     '１週間平均：' + numberToJPYFormat(getNowStatusValues(index)[2][0]) + '\n' +
                     '今月の予測：' + numberToJPYFormat(getNowStatusValues(index)[3][0]) + '\n' +
-                    '先月費差異：' + numberToJPYFormat(getNowStatusValues(index)[4][0]);
+                    '先月費差異：' + numberToJPYFormat(getNowStatusValues(index)[4][0]) + '\n\n' +
+                    belowMessage + 
+                    chartMessage;
                     
-  // 本当は画像送信メッセージを使用したいがグラフの公開URLがCanvasで描かれているため使用出来ず……Orz
-  return isExistsChart(subjectName) ? paymentInfo + '\n\n' + ChartList[subjectName] : paymentInfo;
+
+                    
+  
+  return paymentInfo;
 }
 
 /**
