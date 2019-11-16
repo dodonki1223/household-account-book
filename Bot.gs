@@ -17,7 +17,7 @@ function doPost(e) {
   var message = convertUserMessageToLineMessage(userMessage);
 
   // LineにPostする
-  UrlFetchApp.fetch(config.LinePostUrl, createRequest(replyToken, createMessages(message)))
+  UrlFetchApp.fetch(config.LinePostUrl, createRequest(replyToken, createMessages(message)));
 
   // 成功のステータスを返す
   return ContentService.createTextOutput(JSON.stringify({'content': 'post ok'})).setMimeType(ContentService.MimeType.JSON);

@@ -1,10 +1,12 @@
 // LineAccessToken         ：LINE developersのメッセージ送受信設定に記載のアクセストークン
-// LinePostUrl             ：LINE Messaging APIのURL
+// LineReplyPostUrl        ：LINE Messaging APIのURL（LINEからの応答用）
+// LinePostUrl             ：LINE Messaging APIのURL（LINEに対してPOSTする用）
 // HouseholdAccountBookUrl ：家計簿のURL
 // FormUrl                 ：家計簿入力用のURL
 var _config = {
   LineAccessToken         : 'Lineのアクセストークン',
-  LinePostUrl             : 'https://api.line.me/v2/bot/message/reply',
+  LineReplyPostUrl        : 'https://api.line.me/v2/bot/message/reply',
+  LinePostUrl             : 'https://api.line.me/v2/bot/message/push',
   HouseholdAccountBookUrl : 'Googleスプレッドシートの今月の支出シートURL',
   FormUrl                 : 'GoogleフォームのURL'
 };

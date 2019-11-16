@@ -21,10 +21,7 @@ function paymentInfo(subjectName) {
                     '先月費差異：' + numberToJPYFormat(getNowStatusValues(index)[4][0]) + '\n\n' +
                     belowMessage + 
                     chartMessage;
-                    
 
-                    
-  
   return paymentInfo;
 }
 
