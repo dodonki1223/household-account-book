@@ -13,11 +13,25 @@ function doPost(e) {
   // Googleフォームで回答されたデータを参照用のシートにコピーする（最新の状態を反映させるため）
   copyForm();
 
-  // 表示するメッセージを作成
+  // LineにPostする
   var message = convertUserMessageToLineMessage(userMessage);
+  UrlFetchApp.fetch(Config.LineReplyUrl, createReplyRequest(replyToken, createMessages(message)));
+
+  // 成功のステータスを返す
+  return ContentService.createTextOutput(JSON.stringify({'content': 'post ok'})).setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * 今日の結果のsummaryをLINE BOTにPostする
+ * @return {JSON} Postが成功した情報をJSON形式で返す
+ */
+function doSummaryPost() {
+  // Googleフォームで回答されたデータを参照用のシートにコピーする（最新の状態を反映させるため）
+  copyForm();
 
   // LineにPostする
-  UrlFetchApp.fetch(Config.LineReplyUrl, createReplyRequest(replyToken, createMessages(message)));
+  var message = createMessages(summaryMessage());
+  UrlFetchApp.fetch(Config.LinePushUrl, createPushRequest(message));
 
   // 成功のステータスを返す
   return ContentService.createTextOutput(JSON.stringify({'content': 'post ok'})).setMimeType(ContentService.MimeType.JSON);

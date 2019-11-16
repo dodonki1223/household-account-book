@@ -49,11 +49,32 @@ function notExistsMessage() {
   return 'そのメッセージに回答する答えが存在しないよ（泣）';
 }
 
+/**
+ * LINE BOTの使い方のヘルプメッセージを返す
+ * @return {String} ヘルプメッセージ
+ */
 function helpMessage() {
   return '家計簿：今月の家計簿のURLを表示' + '\n' +
          '入　力：家計簿入力用URLを表示' + '\n' +
          '科目名：今月の状況を表示(食費etc)' + '\n' +
          'ヘルプ：リファレンスを表示';
+}
+
+/**
+ * 今日の結果通知用のメッセージを返す
+ * @return {String} 今日の結果通知用のメッセージ
+ */
+function summaryMessage() {
+  var targetSubjects = ['食費', '日用品', '医療費', '交際費', '洋服代', '娯楽費', '雑費', '合計'];
+
+  var message = '今日の結果を通知するよー🌝\n\n';
+  targetSubjects.forEach(function (subject) {
+    var index = getTargetSubjectIndex(subject);
+    var sumValue = numberToJPYFormat(getNowStatusValues(index)[0][0]);
+    message += subject + '：' + sumValue + '\n'
+  });
+  
+  return message.slice(0, -1);
 }
 
 /**
