@@ -78,17 +78,6 @@ function summaryMessage() {
 }
 
 /**
- * 数値を日本円の表示フォーマットに変換する
- * 少数点以下は切り捨て、３桁区切りでカンマを追加する
- * 例：5666.345 → 5,666円
- * @param {Number} [value] - 数値
- * @return {String} 小数点以下は切捨てて３桁区切りで返す
- */
-function numberToJPYFormat(value) {
-  return String(Math.floor(value)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,') + '円';
-}
-
-/**
  * Postするメッセージを作成する
  * @param {Sheet} [sheet] - シートObject
  * @param {Array} [rows] - 対象のデータ行配列
