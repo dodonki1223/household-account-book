@@ -30,7 +30,7 @@ function paymentInfo(subjectName) {
  * @return {String} 家計簿の入力フォームのURL
  */
 function inputFormURL() {
-  return '家計簿入力フォームです！' + '\n\n' + config.FormUrl;
+  return '家計簿入力フォームです！' + '\n\n' + Config.FormUrl;
 }
 
 /**
@@ -38,7 +38,7 @@ function inputFormURL() {
  * @return {String} 今月の家計簿のシートのURL
  */
 function householdAccountBookUrl() {
-  return '今月の家計簿のURLです！' + '\n\n' + config.HouseholdAccountBookUrl;
+  return '今月の家計簿のURLです！' + '\n\n' + Config.HouseholdAccountBookUrl;
 }
 
 /**
@@ -71,7 +71,7 @@ function numberToJPYFormat(value) {
  * Postするメッセージを作成する
  * @param {Sheet} [sheet] - シートObject
  * @param {Array} [rows] - 対象のデータ行配列
- * @return {String} メッセージの情報
+ * @return {Array} メッセージの情報
  */
 function createMessages(message) {
   return [{

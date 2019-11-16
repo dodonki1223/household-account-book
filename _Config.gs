@@ -1,14 +1,16 @@
-// LineAccessToken         ：LINE developersのメッセージ送受信設定に記載のアクセストークン
-// LineReplyPostUrl        ：LINE Messaging APIのURL（LINEからの応答用）
-// LinePostUrl             ：LINE Messaging APIのURL（LINEに対してPOSTする用）
-// HouseholdAccountBookUrl ：家計簿のURL
-// FormUrl                 ：家計簿入力用のURL
-var _config = {
-  LineAccessToken         : 'Lineのアクセストークン',
-  LineReplyPostUrl        : 'https://api.line.me/v2/bot/message/reply',
-  LinePostUrl             : 'https://api.line.me/v2/bot/message/push',
-  HouseholdAccountBookUrl : 'Googleスプレッドシートの今月の支出シートURL',
-  FormUrl                 : 'GoogleフォームのURL'
+// LineAccessToken                 ：LINE developersのメッセージ送受信設定に記載のアクセストークン
+// LineReplyUrl                    ：LINE Messaging APIのURL（LINEからの応答用）
+// LinePushUrl                     ：LINE Messaging APIのURL（LINEに対してPOSTする用）
+// LinePushNotificationDestination : LineのUserID
+// HouseholdAccountBookUrl         ：家計簿のURL
+// FormUrl                         ：家計簿入力用のURL
+var _Config = {
+  LineAccessToken                 : 'Lineのアクセストークン',
+  LineReplyUrl                    : 'https://api.line.me/v2/bot/message/reply',
+  LinePushUrl                     : 'https://api.line.me/v2/bot/message/push',
+  LinePushNotificationDestination : 'LineのUserID',
+  HouseholdAccountBookUrl         : 'Googleスプレッドシートの今月の支出シートURL',
+  FormUrl                         : 'GoogleフォームのURL'
 };
 
 // グラフの存在する項目のURLリスト

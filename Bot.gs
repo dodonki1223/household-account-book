@@ -17,7 +17,7 @@ function doPost(e) {
   var message = convertUserMessageToLineMessage(userMessage);
 
   // LineにPostする
-  UrlFetchApp.fetch(config.LinePostUrl, createRequest(replyToken, createMessages(message)));
+  UrlFetchApp.fetch(Config.LineReplyUrl, createReplyRequest(replyToken, createMessages(message)));
 
   // 成功のステータスを返す
   return ContentService.createTextOutput(JSON.stringify({'content': 'post ok'})).setMimeType(ContentService.MimeType.JSON);
@@ -43,21 +43,45 @@ function convertUserMessageToLineMessage(userMessage) {
 }
 
 /**
- * リクエスト情報（JSON）を作成する
- * @param {String} [replyToken] - WebHookで受信した応答用Token（LINE BOTより）
- * @param {CallBack} [callback] - calllback関数
- * @return {String} リクエスト情報（JSON）
+ * リクエストのヘッダーを作成
+ * @return {Object} リクエスト情報のヘッダー
  */
-function createRequest(replyToken, callback) {
+function header() {
   return {
-    'headers': {
       'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': 'Bearer ' + config.LineAccessToken,
-    },
+      'Authorization': 'Bearer ' + Config.LineAccessToken,
+      }
+}
+
+/**
+ * 応答用のリクエスト情報（JSON）を作成する
+ * @param {String} [replyToken] - WebHookで受信した応答用Token（LINE BOTより）
+ * @param {Array} [Array] - message情報
+ * @return {Object} リクエスト情報（JSON）
+ */
+function createReplyRequest(replyToken, message) {
+  return {
+    'headers': header(),
     'method': 'post',
     'payload': JSON.stringify({
       'replyToken': replyToken,
-      'messages': callback,
+      'messages': message,
+    }),
+  }
+}
+
+/**
+ * プッシュ用のリクエスト情報（JSON）を作成する
+ * @param {Array} [Array] - message情報
+ * @return {Object} リクエスト情報（JSON）
+ */
+function createPushRequest(message) {
+  return {
+    'headers': header(),
+    'method': 'post',
+    'payload': JSON.stringify({
+      'to': Config.LinePushNotificationDestination,
+      'messages': message
     }),
   }
 }
