@@ -79,11 +79,10 @@ function summaryMessage() {
 
 /**
  * Postするメッセージを作成する
- * @param {Sheet} [sheet] - シートObject
- * @param {Array} [rows] - 対象のデータ行配列
+ * @param {String} [message] - メッセージ
  * @return {Array} メッセージの情報
  */
-function createMessages(message) {
+function buildMessages(message) {
   return [{
       'type': 'text',
       'text': message,

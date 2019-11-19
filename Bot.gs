@@ -15,7 +15,7 @@ function doPost(e) {
 
   // LineにPostする
   var message = convertUserMessageToLineMessage(userMessage);
-  UrlFetchApp.fetch(Config.LineReplyUrl, createReplyRequest(replyToken, createMessages(message)));
+  UrlFetchApp.fetch(Config.LineReplyUrl, createReplyRequest(replyToken, buildMessages(message)));
 
   // 成功のステータスを返す
   return ContentService.createTextOutput(JSON.stringify({'content': 'post ok'})).setMimeType(ContentService.MimeType.JSON);
@@ -30,7 +30,7 @@ function doSummaryPost() {
   copyForm();
 
   // LineにPostする
-  var message = createMessages(summaryMessage());
+  var message = buildMessages(summaryMessage());
   UrlFetchApp.fetch(Config.LinePushUrl, createPushRequest(message));
 
   // 成功のステータスを返す
