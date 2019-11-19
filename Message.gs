@@ -98,34 +98,36 @@ function buildQuickReplyMessages(message, quickReply) {
       'type': 'text',
       'text': message,
       'quickReply': {
-        'items': buildQuickReplyItems(InputTemplateKeys.VariableCost, InputTemplates.VariableCost)
+        'items': quickReply
       }
   }]
 }
 
 /**
- * LineにPostするクイックリプライメッセージ情報（固定費）
- * @param {String} [message] - メッセージ
- * @param {Array} [quickReply] - クイックリプライ用のメッセージ
- * @return {Array} クイックリプライメッセージの情報
+ * クイックリプライメッセージのitemオブジェクト作成（配列用）
+ * @param {Array} [values] - 配列の値
+ * @return {Array} クイックリプライメッセージのitem
  */
-function buildQuickReplyMessagesForFixedCost(message, quickReply) {
-  return [{
-      'type': 'text',
-      'text': message,
-      'quickReply': {
-        'items': buildQuickReplyItems(InputTemplateKeys.FixedCost, InputTemplates.FixedCost)
+function buildQuickReplyItemsForArray(values) {
+  return values.map(function(value){
+    return {
+      'type': 'action',
+      'action': {
+        'type': 'message',
+        'label': value,
+        'text': value
       }
-  }]
+    };
+  });
 }
 
 /**
- * クイックリプライメッセージのitemオブジェクト作成
+ * クイックリプライメッセージのitemオブジェクト作成（入力テンプレート用）
  * @param {Array} [keys] - テンプレートのキーリスト
  * @param {Array} [templateValues] - テンプレートの値
  * @return {Array} クイックリプライメッセージのitem
  */
-function buildQuickReplyItems(keys, templateValues) {
+function buildQuickReplyItemsForTemplates(keys, templateValues) {
   return keys.map(function(key){
     return {
       'type': 'action',

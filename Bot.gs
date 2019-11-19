@@ -49,9 +49,11 @@ function convertUserMessageToLineMessage(userMessage) {
   if (userMessage === '家計簿') {
     return buildMessages(householdAccountBookUrl());
   } else if (userMessage === '入力') {
-    return buildQuickReplyMessages('入力テンプレートを選んでね');
+    var quickReplyItems = buildQuickReplyItemsForTemplates(InputTemplateKeys.VariableCost, InputTemplates.VariableCost);
+    return buildQuickReplyMessages('入力テンプレートを選んでね', quickReplyItems);
   } else if (userMessage === '入力固定費') {
-    return buildQuickReplyMessagesForFixedCost('入力テンプレートを選んでね');    
+    var quickReplyItems = buildQuickReplyItemsForTemplates(InputTemplateKeys.FixedCost, InputTemplates.FixedCost);
+    return buildQuickReplyMessages('入力テンプレートを選んでね', quickReplyItems);
   } else if (isExistsSubject(userMessage)) {
     return buildMessages(paymentInfo(userMessage));
   } else if (userMessage === 'ヘルプ') {
