@@ -15,8 +15,7 @@ function padZero(number) {
  */
 function nowDate() {
   const now = new Date();
-  
-  Logger.log("" + now.getFullYear() + "-" + padZero(now.getMonth() + 1) + "-" + padZero(now.getDate()))
+
   return "" + now.getFullYear() + "-" + padZero(now.getMonth() + 1) + "-" + padZero(now.getDate());
 }
 
@@ -39,4 +38,18 @@ function numberToJPYFormat(value) {
  */
 function buildInputFormTemplateParam(id, value) {
   return id + '=' + encodeURI(value);
+}
+
+/**
+ * 入力テンプレート用のURLを作成
+ * @param {Array} [values] - 入力項目のID
+ * @return {String} 初期入力された状態の入力フォームのURL
+ */
+function buildInputFormTemplateUrl(values) {
+  return Config.FormUrl + 
+         '&' + buildInputFormTemplateParam(InputFormIds.InputUser, values[1]) + 
+         '&' + buildInputFormTemplateParam(InputFormIds.Day, values[2]) + 
+         '&' + buildInputFormTemplateParam(InputFormIds.SubjectName, values[3]) + 
+         '&' + buildInputFormTemplateParam(InputFormIds.Amount, values[4]) + 
+         '&' + buildInputFormTemplateParam(InputFormIds.Note, values[5]);
 }
