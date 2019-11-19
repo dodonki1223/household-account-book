@@ -27,3 +27,15 @@ function getInputTemplates(range) {
   });
   return values;
 }
+
+/**
+ * テンプレート値を取得
+ * @param {String} [keyName] - テンプレートキー名
+ * @param {Array} [templateValues] - 入力テンプレートの値
+ * @return {Array} テンプレートキー名の値
+ */
+function getTemplate(keyName, templateValues) {
+  for (i = 0; i < templateValues.length; i++) {
+    if(templateValues[i][0] == keyName) return templateValues[i];
+  }
+}　

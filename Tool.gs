@@ -30,3 +30,13 @@ function nowDate() {
 function numberToJPYFormat(value) {
   return String(Math.floor(value)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,') + '円';
 }
+
+/**
+ * 入力テンプレート用のURLのURLパラメータ作成
+ * @param {String} [id] - 入力項目のID
+ * @param {String} [value] - セットする値
+ * @return {String} 「entry.999996=value」のような形式
+ */
+function buildInputFormTemplateParam(id, value) {
+  return id + '=' + encodeURI(value);
+}

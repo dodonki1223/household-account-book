@@ -1,5 +1,15 @@
+// Sheet.gsのテストを全て実行する
+function TestSheet() {
+  TestIsExistsSubject();
+  TestGetTargetSubjectIndex();
+  TestGetTodayStatus();
+  TestGetNowStatusValues();
+}
+
 // 対象のカラム名存在するか？のメソッドのテスト
 function TestIsExistsSubject() {
+  Logger.log('対象のカラム名存在するか？のメソッドのテスト');
+
   // 通常科目
   Logger.log('食費：' + isExistsSubject('食費'));
   Logger.log('日用品：' + isExistsSubject('日用品'));
@@ -21,10 +31,14 @@ function TestIsExistsSubject() {
 
   // 存在しない科目
   Logger.log('hoge：' + isExistsSubject('hoge'));
+  
+  Logger.log('');
 }
 
 // 対象カラムのインデックスを取得するメソッドのテスト
 function TestGetTargetSubjectIndex() {
+  Logger.log('対象カラムのインデックスを取得するメソッドのテスト');
+
   var sheet = getSheet('今月支出');
   
   // 通常科目
@@ -48,10 +62,14 @@ function TestGetTargetSubjectIndex() {
 
   // 存在しない科目
   Logger.log('食費であること：' + sheet.getRange(1, getTargetSubjectIndex('hogehogefugafua')).getValues()[0][0]);
+  
+  Logger.log('');
 }
 
 // 対象の項目の当日の支出額を取得するメソッドのテスト
 function TestGetTodayStatus() {
+  Logger.log('対象の項目の当日の支出額を取得するメソッドのテスト');
+
   var sheet = getSheet('今月支出');
   var today = new Date();
 
@@ -73,10 +91,14 @@ function TestGetTodayStatus() {
   Logger.log('今日の水道光熱費が取得できていること' + sheet.getRange(today.getDate() + 1, 15).getValues()[0][0] + ':' + getTodayStatus(15));
   Logger.log('今日の交通費が取得できていること' + sheet.getRange(today.getDate() + 1, 16).getValues()[0][0] + ':' + getTodayStatus(16));
   Logger.log('今日の合計（固定費）が取得できていること' + sheet.getRange(today.getDate() + 1, 17).getValues()[0][0] + ':' + getTodayStatus(17));  
+  
+  Logger.log('');
 }
 
 // 対象の項目の合計、１日平均、１週間平均、今月料金予測、先月費差異の値を取得するメソッドのテスト
 function TestGetNowStatusValues() {
+  Logger.log('対象の項目の合計、１日平均、１週間平均、今月料金予測、先月費差異の値を取得するメソッドのテスト');
+
   var sheet = getSheet('今月支出');
 
   Logger.log('合計値が取得できること(' + sheet.getRange(33, 3).getValues()[0][0] + ')：' + getNowStatusValues(3)[0][0]);
@@ -84,4 +106,6 @@ function TestGetNowStatusValues() {
   Logger.log('１週間平均が取得できること(' + sheet.getRange(35, 3).getValues()[0][0] + ')：' + getNowStatusValues(3)[2][0]);
   Logger.log('今月料金予測が取得できること(' + sheet.getRange(36, 3).getValues()[0][0] + ')：' + getNowStatusValues(3)[3][0]);
   Logger.log('先月費差異が取得できること(' + sheet.getRange(37, 3).getValues()[0][0] + ')：' + getNowStatusValues(3)[4][0]);
+  
+  Logger.log('');
 }
