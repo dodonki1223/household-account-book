@@ -1,9 +1,20 @@
 // Sheet.gsのテストを全て実行する
 function TestSheet() {
+  TestSubjectList();
   TestIsExistsSubject();
   TestGetTargetSubjectIndex();
   TestGetTodayStatus();
   TestGetNowStatusValues();
+}
+
+// 科目名の一覧の変数のテスト
+function TestSubjectList() {
+  Logger.log('科目名の一覧の変数のテスト');
+  
+  Logger.log('通常科目一覧：' + SubjectList.VariableCost);
+  Logger.log('固定費科目一覧：' + SubjectList.FixedCost);
+  
+  Logger.log('');
 }
 
 // 対象のカラム名存在するか？のメソッドのテスト

@@ -65,15 +65,13 @@ function helpMessage() {
  * @return {String} 今日の結果通知用のメッセージ
  */
 function summaryMessage() {
-  var targetSubjects = ['食費', '日用品', '医療費', '交際費', '洋服代', '娯楽費', '雑費', '合計'];
-
-  var message = '今日の結果を通知するよー🌝\n\n';
-  targetSubjects.forEach(function (subject) {
+  var message = '今日の結果を通知するよー🌝\n\n'; 
+  SubjectList.VariableCost.forEach(function (subject) {
     var index = getTargetSubjectIndex(subject);
     var sumValue = numberToJPYFormat(getNowStatusValues(index)[0][0]);
     message += subject + '：' + sumValue + '\n'
   });
-  
+
   return message.slice(0, -1);
 }
 

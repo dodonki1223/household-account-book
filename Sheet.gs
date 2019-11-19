@@ -1,9 +1,21 @@
 // 検索用の情報
-var searchInfo = {
+var SearchInfo = {
   StartColumn    : 3,
   StartRow       : 2,
   ResultStartRow : 33,
   ResultEndRow   : 37,
+};
+
+// 科目名の範囲
+var SubjectNameRange = {
+  VariableCost: 'C1:J1',
+  FixedCost   : 'K1:Q1'
+};
+
+// 科目名名の一覧
+var SubjectList = {
+  VariableCost: getSheet('今月支出').getRange(SubjectNameRange.VariableCost).getValues()[0],
+  FixedCost   : getSheet('今月支出').getRange(SubjectNameRange.FixedCost).getValues()[0]
 }
 
 /**
@@ -46,7 +58,7 @@ function getSearchCloumns() {
   var lastColumn = sheet.getLastColumn() - 1;
 
   // 検索対象のカラムの一覧を返す
-  return sheet.getRange(1, searchInfo.StartColumn, 1, lastColumn - 1).getValues()[0];
+  return sheet.getRange(1, SearchInfo.StartColumn, 1, lastColumn - 1).getValues()[0];
 }
 
 /**
@@ -66,7 +78,7 @@ function getTargetSubjectIndex(subjectName) {
   });
   
   // 検索に引っかからなかったらデフォルトのsearchStartColumnのIndexを返す
-  return searchInfo.StartColumn + targetColumnIndex;
+  return SearchInfo.StartColumn + targetColumnIndex;
 }
 
 /**
@@ -92,7 +104,7 @@ function getTodayStatus(subjectIndex) {
     }
   });
   
-  return sheet.getRange(targetRowIndex + searchInfo.StartRow, subjectIndex).getValues()[0][0];
+  return sheet.getRange(targetRowIndex + SearchInfo.StartRow, subjectIndex).getValues()[0][0];
 }
 
 /**
@@ -102,6 +114,6 @@ function getTodayStatus(subjectIndex) {
  */
 function getNowStatusValues(subjectIndex) {
   var sheet = getSheet('今月支出');
-  return sheet.getRange(searchInfo.ResultStartRow, subjectIndex, searchInfo.ResultEndRow).getValues();
+  return sheet.getRange(SearchInfo.ResultStartRow, subjectIndex, SearchInfo.ResultEndRow).getValues();
   
 }
