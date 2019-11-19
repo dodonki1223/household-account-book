@@ -10,6 +10,9 @@ function doPost(e) {
   var replyToken  = JSON.parse(e.postData.contents).events[0].replyToken;   // WebHookで受信した応答用Token
   var userMessage = JSON.parse(e.postData.contents).events[0].message.text; // ユーザーのメッセージを取得
 
+  // FormURLが含まれていた場合はクリックリプライメッセージなので何もせずに処理を終了する
+  if (userMessage.indexOf(Config.FormUrl) != -1) return;
+
   // Googleフォームで回答されたデータを参照用のシートにコピーする（最新の状態を反映させるため）
   copyForm();
 
@@ -46,7 +49,9 @@ function convertUserMessageToLineMessage(userMessage) {
   if (userMessage === '家計簿') {
     return buildMessages(householdAccountBookUrl());
   } else if (userMessage === '入力') {
-    return buildQuickReplyMessages(inputFormURL());
+    return buildQuickReplyMessages('入力テンプレートを選んでね');
+  } else if (userMessage === '入力固定費') {
+    return buildQuickReplyMessagesForFixedCost('入力テンプレートを選んでね');    
   } else if (isExistsSubject(userMessage)) {
     return buildMessages(paymentInfo(userMessage));
   } else if (userMessage === 'ヘルプ') {

@@ -100,16 +100,42 @@ function buildQuickReplyMessages(message, quickReply) {
       'type': 'text',
       'text': message,
       'quickReply': {
-        'items': [
-          {
-            'type': 'action',
-            'action': {
-              'type': 'message',
-              'label': 'メッセージ',
-              'text': 'test'
-            }
-          }
-        ]
+        'items': buildQuickReplyItems(InputTemplateKeys.VariableCost, InputTemplates.VariableCost)
       }
   }]
+}
+
+/**
+ * LineにPostするクイックリプライメッセージ情報（固定費）
+ * @param {String} [message] - メッセージ
+ * @param {Array} [quickReply] - クイックリプライ用のメッセージ
+ * @return {Array} クイックリプライメッセージの情報
+ */
+function buildQuickReplyMessagesForFixedCost(message, quickReply) {
+  return [{
+      'type': 'text',
+      'text': message,
+      'quickReply': {
+        'items': buildQuickReplyItems(InputTemplateKeys.FixedCost, InputTemplates.FixedCost)
+      }
+  }]
+}
+
+/**
+ * クイックリプライメッセージのitemオブジェクト作成
+ * @param {Array} [keys] - テンプレートのキーリスト
+ * @param {Array} [templateValues] - テンプレートの値
+ * @return {Array} クイックリプライメッセージのitem
+ */
+function buildQuickReplyItems(keys, templateValues) {
+  return keys.map(function(key){
+    return {
+      'type': 'action',
+      'action': {
+        'type': 'message',
+        'label': key,
+        'text': buildInputFormTemplateUrl(getTemplate(key, templateValues))
+      }
+    };
+  });
 }

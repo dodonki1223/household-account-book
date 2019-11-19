@@ -37,7 +37,9 @@ function numberToJPYFormat(value) {
  * @return {String} 「entry.999996=value」のような形式
  */
 function buildInputFormTemplateParam(id, value) {
-  return id + '=' + encodeURI(value);
+  // return id + '=' + encodeURI(value);
+  // 本当は上の方が良いがLineのAPIの文字数制限に引っかかるのでエンコードは行わないようにする（2000文字制限）
+  return id + '=' + value;
 }
 
 /**
