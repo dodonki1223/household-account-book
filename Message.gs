@@ -78,7 +78,7 @@ function summaryMessage() {
 }
 
 /**
- * Postするメッセージを作成する
+ * LineにPostするメッセージ情報
  * @param {String} [message] - メッセージ
  * @return {Array} メッセージの情報
  */
@@ -89,10 +89,27 @@ function buildMessages(message) {
   }]
 }
 
-// 対象項目の今月の支出情報を取得するメソッドのテスト
-function TestPaymentInfo() {
-  Logger.log(paymentInfo('食費'));
-  Logger.log(paymentInfo('日用品'));
-  Logger.log(paymentInfo('娯楽費'));
-  Logger.log(paymentInfo('住居費'));
+/**
+ * LineにPostするクイックリプライメッセージ情報
+ * @param {String} [message] - メッセージ
+ * @param {Array} [quickReply] - クイックリプライ用のメッセージ
+ * @return {Array} クイックリプライメッセージの情報
+ */
+function buildQuickReplyMessages(message, quickReply) {
+  return [{
+      'type': 'text',
+      'text': message,
+      'quickReply': {
+        'items': [
+          {
+            'type': 'action',
+            'action': {
+              'type': 'message',
+              'label': 'メッセージ',
+              'text': 'test'
+            }
+          }
+        ]
+      }
+  }]
 }

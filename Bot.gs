@@ -15,7 +15,7 @@ function doPost(e) {
 
   // LineにPostする
   var message = convertUserMessageToLineMessage(userMessage);
-  UrlFetchApp.fetch(Config.LineReplyUrl, createReplyRequest(replyToken, buildMessages(message)));
+  UrlFetchApp.fetch(Config.LineReplyUrl, createReplyRequest(replyToken, message));
 
   // 成功のステータスを返す
   return ContentService.createTextOutput(JSON.stringify({'content': 'post ok'})).setMimeType(ContentService.MimeType.JSON);
@@ -40,19 +40,19 @@ function doSummaryPost() {
 /**
  * ユーザーの入力用メッセージからそれに対応したメッセージを返す
  * @param {String} [userMessage] - ユーザーの入力用メッセージ
- * @return {String} メッセージ
+ * @return {Object} LineにPostするようのメッセージObject
  */
 function convertUserMessageToLineMessage(userMessage) {
   if (userMessage === '家計簿') {
-    return householdAccountBookUrl();
+    return buildMessages(householdAccountBookUrl());
   } else if (userMessage === '入力') {
-    return inputFormURL();
+    return buildQuickReplyMessages(inputFormURL());
   } else if (isExistsSubject(userMessage)) {
-    return paymentInfo(userMessage);
+    return buildMessages(paymentInfo(userMessage));
   } else if (userMessage === 'ヘルプ') {
-    return helpMessage();
+    return buildMessages(helpMessage());
   } else {
-    return notExistsMessage();
+    return buildMessages(notExistsMessage());
   }
 }
 
