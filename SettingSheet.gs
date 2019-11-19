@@ -14,6 +14,12 @@ var InputTemplates = {
   FixedCost   : getInputTemplates('P3:U15'), // 固定費
 }
 
+// 入力用テンプレートのKeyリスト
+var InputTemplateKeys = {
+  VariableCost: getKeyList(InputTemplates.VariableCost),
+  FixedCost   : getKeyList(InputTemplates.FixedCost)
+}
+
 /**
  * 入力テンプレートを取得
  * @param {String} [range] - 入力テンプレートRange
@@ -38,4 +44,15 @@ function getTemplate(keyName, templateValues) {
   for (i = 0; i < templateValues.length; i++) {
     if(templateValues[i][0] == keyName) return templateValues[i];
   }
-}　
+}
+
+/**
+ * テンプレートのKey名リストを取得
+ * @param {Array} [templateValues] - 入力テンプレートの値
+ * @return {Array} テンプレートキー名リスト
+ */
+function getKeyList(templateValues) {
+  return templateValues.map(function(value){
+    return value[0];
+  });
+}

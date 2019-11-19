@@ -3,6 +3,7 @@ function TestSettingSheet() {
   TestInputFormIds();
   TestInputTemplates();
   TestGetTemplate();
+  TestInputTemplateKeys();
 }
 
 // 入力フォームの固定IDを取得する変数のテスト
@@ -17,9 +18,9 @@ function TestInputFormIds() {
   Logger.log('');
 }
 
-// 入力テンプレートの値取得メソッドのテスト
+// 入力テンプレートの値を取得する変数のテスト
 function TestInputTemplates() {
-  Logger.log('入力テンプレートの値取得メソッドのテスト');
+  Logger.log('入力テンプレートの値を取得する変数のテスト');
 
   Logger.log('テンプレート');
   InputTemplates.VariableCost.map(function(value, index){
@@ -44,6 +45,16 @@ function TestGetTemplate(){
   
   // 「固定費」のテンプレートの値を取得
   Logger.log(getTemplate('家賃', InputTemplates.FixedCost));
+  
+  Logger.log('');
+}
+
+// テンプレート値のKeyリスト取得する変数のテスト
+function TestInputTemplateKeys(){
+  Logger.log('テンプレート値のKeyリスト取得する変数のテスト');
+
+  Logger.log('通常のもの：' + InputTemplateKeys.VariableCost);
+  Logger.log('固定費：' + InputTemplateKeys.FixedCost);
   
   Logger.log('');
 }
