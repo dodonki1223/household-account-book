@@ -50,7 +50,7 @@ function convertUserMessageToLineMessage(userMessage) {
     return buildMessages(householdAccountBookUrl());
   } else if (userMessage === '科目結果') {
     var quickReplyItems = buildQuickReplyItemsForArray(SubjectList.VariableCost);
-    return buildQuickReplyMessages('科目名を選んでね😍', quickReplyItems);
+    return buildQuickReplyMessages('科目を選んでね😍', quickReplyItems);
   } else if (userMessage === '今日の結果') {
     return buildMessages(summaryMessage());
   } else if (userMessage === '入力') {

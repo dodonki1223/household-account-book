@@ -6,8 +6,8 @@
 function paymentInfo(subjectName) {
   var index = getTargetSubjectIndex(subjectName);
 
-  var isBelowForLastMonth = getNowStatusValues(index)[4][0] < 0
-  var belowMessage = isBelowForLastMonth ? 'いい調子だ！\n先月より安いぞ😍' : 'ふーむ🤔\n先月よりも使い込んでいるな😭\n気合を入れろ！'
+  var isBelowForLastMonth = getNowStatusValues(index)[4][0] <= 0
+  var belowMessage = isBelowForLastMonth ? 'いい調子だ！😍' : 'ふーむ🤔\n先月よりも使い込んでいるな😭\n気合を入れろ！'
 
   // 本当は画像送信メッセージを使用したいがグラフの公開URLがCanvasで描かれているため使用出来ず……Orz
   var chartMessage = isExistsChart(subjectName) ? '\n' + 'グラフを出しとくね🙄' + '\n\n' +ChartList[subjectName] : '';
