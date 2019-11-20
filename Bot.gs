@@ -48,12 +48,17 @@ function doSummaryPost() {
 function convertUserMessageToLineMessage(userMessage) {
   if (userMessage === '家計簿') {
     return buildMessages(householdAccountBookUrl());
+  } else if (userMessage === '科目結果') {
+    var quickReplyItems = buildQuickReplyItemsForArray(SubjectList.VariableCost);
+    return buildQuickReplyMessages('科目名を選んでね😍', quickReplyItems);
+  } else if (userMessage === '今日の結果') {
+    return buildMessages(summaryMessage());
   } else if (userMessage === '入力') {
     var quickReplyItems = buildQuickReplyItemsForTemplates(InputTemplateKeys.VariableCost, InputTemplates.VariableCost);
-    return buildQuickReplyMessages('入力テンプレートを選んでね', quickReplyItems);
+    return buildQuickReplyMessages('入力テンプレートを選んでね😍', quickReplyItems);
   } else if (userMessage === '入力固定費') {
     var quickReplyItems = buildQuickReplyItemsForTemplates(InputTemplateKeys.FixedCost, InputTemplates.FixedCost);
-    return buildQuickReplyMessages('入力テンプレートを選んでね', quickReplyItems);
+    return buildQuickReplyMessages('入力テンプレートを選んでね😍', quickReplyItems);
   } else if (isExistsSubject(userMessage)) {
     return buildMessages(paymentInfo(userMessage));
   } else if (userMessage === 'ヘルプ') {
