@@ -20,6 +20,17 @@ function nowDate() {
 }
 
 /**
+ * 今月の指定日付けの文字列を(YYYY-MM-DD)の形式で返す
+ * @param {Number} [number] - 数値
+ * @return {String} (YYYY-MM-DD)の形式の日付け文字列
+ */
+function nowDateForSpecifiedDay(number) {
+  const now = new Date();
+
+  return "" + now.getFullYear() + "-" + padZero(now.getMonth() + 1) + "-" + padZero(number);
+}
+
+/**
  * 数値を日本円の表示フォーマットに変換する
  * 少数点以下は切り捨て、３桁区切りでカンマを追加する
  * 例：5666.345 → 5,666円

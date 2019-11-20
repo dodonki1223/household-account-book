@@ -1,3 +1,22 @@
+// Tool.gsのテストを全て実行する
+function TestTool() {
+  TestNowDateForSpecifiedDay();
+  TestBuildInputFormTemplateParam();
+  TestBuildInputFormTemplateUrl();
+}
+
+// 今月の指定日付けの文字列を(YYYY-MM-DD)の形式で返すのテスト
+function TestNowDateForSpecifiedDay(){
+  Logger.log('今月の指定日付けの文字列を(YYYY-MM-DD)の形式で返すのテスト');
+
+  Logger.log(nowDateForSpecifiedDay(1));
+  Logger.log(nowDateForSpecifiedDay(9));
+  Logger.log(nowDateForSpecifiedDay(10));
+  Logger.log(nowDateForSpecifiedDay(20));
+  
+  Logger.log('');
+}
+
 // 入力テンプレート用のURLのURLパラメータ作成メソッドのテスト
 function TestBuildInputFormTemplateParam() {
   Logger.log('入力テンプレート用のURLのURLパラメータ作成メソッドのテスト');
