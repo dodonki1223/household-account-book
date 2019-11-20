@@ -54,7 +54,7 @@ function notExistsMessage() {
  * @return {String} ヘルプメッセージ
  */
 function helpMessage() {
-  return '⭐BOTに下記キーワードで話しかけよう⭐' + '\n\n' +
+  return '⭐BOTに話しかけよう⭐' + '\n\n' +
          '　　家計簿：今月の家計簿のURL' + '\n' +
          '　科目結果：科目毎の結果表示' + '\n' +
          '　　科目名：対象科目の結果表示' + '\n' +
