@@ -73,9 +73,9 @@ function summaryMessage() {
     return subject;
   });
 
-  var message = '今日の結果を通知するよー🌝\n\n'; 
+  var message = '今月の支出状況を通知するよー🌝\n\n'; 
   addedSpaceSubjects.forEach(function (subject) {
-    var index = getTargetSubjectIndex(subject);
+    var index = getTargetSubjectIndex(subject.replace('　', ''));
     var sumValue = numberToJPYFormat(getNowStatusValues(index)[0][0]);
     message += subject + '：' + sumValue + '\n'
   });
