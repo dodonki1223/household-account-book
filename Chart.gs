@@ -3,7 +3,7 @@
  * @return {Array} 全てのグラフデータ
  */
 function getAllCharts() {
-  var sheet = getSheet('今月支出');
+  var sheet = getSheet('今月');
   return sheet.getCharts();
 }
 

@@ -50,7 +50,7 @@ function TestIsExistsSubject() {
 function TestGetTargetSubjectIndex() {
   Logger.log('対象カラムのインデックスを取得するメソッドのテスト');
 
-  var sheet = getSheet('今月支出');
+  var sheet = getSheet('今月');
   
   // 通常科目
   Logger.log('食費であること：' + sheet.getRange(1, getTargetSubjectIndex('食費')).getValues()[0][0]);
@@ -81,7 +81,7 @@ function TestGetTargetSubjectIndex() {
 function TestGetTodayStatus() {
   Logger.log('対象の項目の当日の支出額を取得するメソッドのテスト');
 
-  var sheet = getSheet('今月支出');
+  var sheet = getSheet('今月');
   var today = new Date();
 
   // 通常科目
@@ -110,7 +110,7 @@ function TestGetTodayStatus() {
 function TestGetNowStatusValues() {
   Logger.log('対象の項目の合計、１日平均、１週間平均、今月料金予測、先月費差異の値を取得するメソッドのテスト');
 
-  var sheet = getSheet('今月支出');
+  var sheet = getSheet('今月');
 
   Logger.log('合計値が取得できること(' + sheet.getRange(33, 3).getValues()[0][0] + ')：' + getNowStatusValues(3)[0][0]);
   Logger.log('１日平均が取得できること(' + sheet.getRange(34, 3).getValues()[0][0] + ')：' + getNowStatusValues(3)[1][0]);

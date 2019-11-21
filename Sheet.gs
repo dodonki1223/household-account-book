@@ -14,8 +14,8 @@ var SubjectNameRange = {
 
 // 科目名名の一覧
 var SubjectList = {
-  VariableCost: getSheet('今月支出').getRange(SubjectNameRange.VariableCost).getValues()[0],
-  FixedCost   : getSheet('今月支出').getRange(SubjectNameRange.FixedCost).getValues()[0]
+  VariableCost: getSheet('今月').getRange(SubjectNameRange.VariableCost).getValues()[0],
+  FixedCost   : getSheet('今月').getRange(SubjectNameRange.FixedCost).getValues()[0]
 }
 
 /**
@@ -52,7 +52,7 @@ function isExistsSubject(subjectName) {
  * @return {Array} 検索対象カラムの一覧
  */
 function getSearchCloumns() {
-  var sheet = getSheet('今月支出');
+  var sheet = getSheet('今月');
   
   // 最終カラムを取得（最終カラムの値が０始まりのため-1する）
   var lastColumn = sheet.getLastColumn() - 1;
@@ -87,7 +87,7 @@ function getTargetSubjectIndex(subjectName) {
  * @return {Number} 当日の支出額
  */
 function getTodayStatus(subjectIndex) {
-  var sheet = getSheet('今月支出');
+  var sheet = getSheet('今月');
   
   // 検索対象の日付け行の値を取得（最終行の値が０始まりのため-1する）
   var lastRow = sheet.getLastRow() - 1;
@@ -113,7 +113,7 @@ function getTodayStatus(subjectIndex) {
  * @return {Array} 「合計、１日平均、１週間平均、今月料金予測、先月費差異」の値
  */
 function getNowStatusValues(subjectIndex) {
-  var sheet = getSheet('今月支出');
+  var sheet = getSheet('今月');
   return sheet.getRange(SearchInfo.ResultStartRow, subjectIndex, SearchInfo.ResultEndRow).getValues();
   
 }
