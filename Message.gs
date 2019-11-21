@@ -26,14 +26,6 @@ function paymentInfo(subjectName) {
 }
 
 /**
- * 家計簿の入力フォームのURLを返す
- * @return {String} 家計簿の入力フォームのURL
- */
-function inputFormURL() {
-  return '家計簿入力フォームです！' + '\n\n' + Config.FormUrl;
-}
-
-/**
  * 今月の家計簿のシートのURLを返す
  * @return {String} 今月の家計簿のシートのURL
  */
@@ -69,13 +61,25 @@ function helpMessage() {
  * @return {String} 今日の結果通知用のメッセージ
  */
 function summaryMessage() {
+  var maxLength = 0;
+  SubjectList.VariableCost.forEach(function(subject){
+    if (maxLength < subject.length) maxLength = subject.length;
+  });
+  // 科目名の文字の長さを一定にする（足りていないものの前にはスペースを追加する）
+  var addedSpaceSubjects = SubjectList.VariableCost.map(function(subject){
+    while(subject.length < maxLength){
+      subject = "　" + subject;
+    };
+    return subject;
+  });
+
   var message = '今日の結果を通知するよー🌝\n\n'; 
-  SubjectList.VariableCost.forEach(function (subject) {
+  addedSpaceSubjects.forEach(function (subject) {
     var index = getTargetSubjectIndex(subject);
     var sumValue = numberToJPYFormat(getNowStatusValues(index)[0][0]);
     message += subject + '：' + sumValue + '\n'
   });
-
+  
   return message.slice(0, -1);
 }
 
