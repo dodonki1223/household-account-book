@@ -57,6 +57,8 @@ Googleスプレッドシートではいくつかのシートがあります
 `設定` シートはLINE BOTで入力テンプレートを取得する際に使用するシートとなります  
 詳しくはLINE BOTの方で説明します
 
+![setting_sample](./images/setting_sample.png)
+
 ### LINE BOT
 
 # 環境構築
