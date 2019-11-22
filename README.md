@@ -5,13 +5,59 @@ Googleフォーム、Googleスプレッドシート、LINE BOTで管理するサ
 ![Diagram](./images/diagram.png)  
 
 Icons make by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/)
-  
-  
-LINE BOTに科目ごと話しかけると現在の状態（本日支出額、１ヶ月合計、１日平均、１週間平均、今月予測）とグラフのURLを教えてくれます
 
-![line_bot_sample](./images/line_bot.png)
+## 概要
 
-![graph_sample](./images/graph.png)
+### Googleフォーム
+
+Googleフォームは家計簿にデータを登録するために使用します  
+入力したデータはGoogleスプレッドシートへと格納されていきます
+
+![google_form_sample](./images/google_form_sample.png)
+
+### Googleスプレッドシート
+
+Googleスプレッドシートではいくつかのシートがあります
+
+#### フォームの回答
+
+`フォームの回答` シートではGoogleフォームから入力されたデータを格納します
+
+![input_data_sample](./images/input_data_sample.png)
+
+#### 家計簿補正
+
+`家計簿補正` シートは `フォームの回答` シートのデータを補正するためのシートです  
+日の入力データを元にどの月に入力されたかを判断しています  
+日付補正列が追加されていてそこで判断をしています
+
+![input_data_correction_sample](./images/input_data_correction_sample.png)
+
+#### 今月
+
+`今月` シートは `家計簿補正` シートを元に今月の支出を科目ごとまとめたシートになります
+
+![this_month_sample](./images/this_month_sample.png)
+
+#### 先月
+
+`先月` シートは `家計簿補正` シートを元に先月の支出を科目ごとまとめたシートになります  
+`今月` シートとの違いは `今月料金予測` 、`先月費差異` の項目がない、グラフが無いになります。ほんとんど`今月` シートと同じです
+
+![last_month_sample](./images/last_month_sample.png)
+
+#### 月集計
+
+`月集計` シートは `家計簿補正` シートを元に月ごとの集計結果を算出しています
+
+![monthly_aggregation_sample](./images/monthly_aggregation_sample.png)
+
+#### 設定
+
+`設定` シートはLINE BOTで入力テンプレートを取得する際に使用するシートとなります  
+詳しくはLINE BOTの方で説明します
+
+### LINE BOT
 
 # 環境構築
 
