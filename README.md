@@ -61,6 +61,81 @@ Googleスプレッドシートではいくつかのシートがあります
 
 ### LINE BOT
 
+LINE BOT画面の下部のメニューを押すことによりいろいろな機能を使用することができます  
+表示される内容についてはGoogleスプレッドシートの `今月` シートの内容を通知するようになっています
+
+#### 科目毎の結果
+
+上の段の左の `科目毎の結果` をクリックすると科目選択のボタンメニュー上に表示されます  
+科目のボタンをクリックするとその科目の今月の結果を確認することができます
+
+![line_choose_subject1](./images/line_choose_subject1.png)
+
+画像では食費の結果を確認している所です
+
+![line_choose_subject2](./images/line_choose_subject2.png)
+
+グラフの設定をしている場合はリンクが表示されクリックすると下記のように表示されます
+
+![line_food_expenses_chart](./images/line_food_expenses_chart.png)
+
+#### 今月の支出状況
+
+上の段の真ん中の `今月の支出状況` をクリックすると今月の使用状況が表示されます
+
+![line_this_month_status](./images/line_this_month_status.png)
+
+#### 家計簿へ
+
+上の段の右の `家計簿へ` をクリックすると `今月` シートへのリンクが表示されます
+
+![line_household_account_book_link](./images/line_household_account_book_link.png)
+
+#### 入力
+
+下の段の左の `入力` をクリックすると入力用のテンプレートが表示されます  
+このテンプレートの一覧はGoogleスプレッドシートの `設定` シートに設定されている `入力テンプレート` から表示されます
+
+![lien_input1](./images/lien_input1.png)
+
+入力テンプレート例
+
+![line_setting_sheet_input_template](./images/line_setting_sheet_input_template.png)
+
+入力テンプレート名をクリックするとGoogleフォームへのURLが表示されます  
+
+テンプレート名の `昼食` を選択した場合は入力者が `どどんき` 、日が `2019-11-23` 、科目が `食費` 、備考が `昼食` で入力された状態のGoogleフォームへのURLが表示されます
+
+![line_input2](./images/line_input2.png)
+
+#### 固定費入力
+
+下の段の真ん中の `固定費入力` をクリックすると固定費入力用のテンプレートが表示されます  
+このテンプレートの一覧はGoogleスプレッドシートの `設定` シートに設定されている `固定費入力テンプレート` から表示されます
+
+![line_fixed_cost_input1](./images/line_fixed_cost_input1.png)
+
+入力テンプレート例
+
+![line_setting_sheet_fixed_cost_input_template](./images/line_setting_sheet_fixed_cost_input_template.png)
+
+入力テンプレート名をクリックするとGoogleフォームへのURLが表示されます 
+基本的に `入力` メニューの機能と一緒で対象が固定費になっているだけです
+
+#### ヘルプ
+
+下の段の右の `ヘルプ` をクリックするとこのLINE BOTの使い方が表示されます  
+メニューを使わず話しかける時はヘルプに書かれている通りにするとLINE BOTが答えてくれます
+
+![line_help](./images/line_help.png)
+
+
+
+
+
+
+
+
 # 環境構築
 
 ## Googleフォームを作成する
