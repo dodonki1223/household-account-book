@@ -1,17 +1,13 @@
 /**
  * 対象項目の今月の支出情報を取得する
  * @param {String} [subjectName] - カラム名
- * @return {String} 今月の支出情報
+ * @return {Array} 今月の支出情報
  */
 function paymentInfo(subjectName) {
   var index = getTargetSubjectIndex(subjectName);
 
   var isBelowForLastMonth = getNowStatusValues(index)[4][0] <= 0
   var belowMessage = isBelowForLastMonth ? 'いい調子だ！😍' : 'ふーむ🤔\n先月よりも使い込んでいるな😭\n気合を入れろ！'
-
-  // 本当は画像送信メッセージを使用したいがグラフの公開URLがCanvasで描かれているため使用出来ず……Orz
-  var chartMessage = isExistsChart(subjectName) ? '\n' + 'グラフを出しとくね🙄' + '\n\n' +ChartList[subjectName] : '';
-
   var paymentInfo = '⭐今月の' + subjectName + '⭐ ' + '\n\n' +
                     '本日支出額：' + numberToJPYFormat(getTodayStatus(index)) + '\n' +
                     '１ヶ月合計：' + numberToJPYFormat(getNowStatusValues(index)[0][0]) + '\n' +
@@ -19,10 +15,11 @@ function paymentInfo(subjectName) {
                     '１週間平均：' + numberToJPYFormat(getNowStatusValues(index)[2][0]) + '\n' +
                     '今月の予測：' + numberToJPYFormat(getNowStatusValues(index)[3][0]) + '\n' +
                     '先月費差異：' + numberToJPYFormat(getNowStatusValues(index)[4][0]) + '\n\n' +
-                    belowMessage + 
-                    chartMessage;
+                    belowMessage;
 
-  return paymentInfo;
+  // 本当は画像送信メッセージを使用したいがグラフの公開URLがCanvasで描かれているため使用出来ず……Orz
+  var message = isExistsChart(subjectName) ? [paymentInfo ,'グラフを出しとくね🙄\n' + ChartList[subjectName]] : [paymentInfo];
+  return message;
 }
 
 /**
@@ -88,11 +85,25 @@ function summaryMessage() {
  * @param {String} [message] - メッセージ
  * @return {Array} メッセージの情報
  */
-function buildMessages(message) {
+function buildMessage(message) {
   return [{
       'type': 'text',
-      'text': message,
-  }]
+      'text': message
+      }];
+}
+
+/**
+ * LineにPostするメッセージ情報(複数バージョン)
+ * @param {Array} [messages] - メッセージ
+ * @return {Array} メッセージの情報
+ */
+function buildMessages(messages) {
+  return messages.map(function(message){
+    return {
+      'type': 'text',
+      'text': message
+    }
+  });
 }
 
 /**
