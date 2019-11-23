@@ -6,26 +6,26 @@ Googleフォーム、Googleスプレッドシート、LINE BOTで管理するサ
 
 Icons make by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/)
 
-## 概要
+# 概要
 
-### Googleフォーム
+## Googleフォーム
 
 Googleフォームは家計簿にデータを登録するために使用します  
 入力したデータはGoogleスプレッドシートへと格納されていきます
 
 ![google_form_sample](./images/google_form_sample.png)
 
-### Googleスプレッドシート
+## Googleスプレッドシート
 
 Googleスプレッドシートではいくつかのシートがあります
 
-#### フォームの回答
+### フォームの回答
 
 `フォームの回答` シートではGoogleフォームから入力されたデータを格納します
 
 ![input_data_sample](./images/input_data_sample.png)
 
-#### 家計簿補正
+### 家計簿補正
 
 `家計簿補正` シートは `フォームの回答` シートのデータを補正するためのシートです  
 日の入力データを元にどの月に入力されたかを判断しています  
@@ -33,38 +33,38 @@ Googleスプレッドシートではいくつかのシートがあります
 
 ![input_data_correction_sample](./images/input_data_correction_sample.png)
 
-#### 今月
+### 今月
 
 `今月` シートは `家計簿補正` シートを元に今月の支出を科目ごとまとめたシートになります
 
 ![this_month_sample](./images/this_month_sample.png)
 
-#### 先月
+### 先月
 
 `先月` シートは `家計簿補正` シートを元に先月の支出を科目ごとまとめたシートになります  
 `今月` シートとの違いは `今月料金予測` 、`先月費差異` の項目がない、グラフが無いになります。ほんとんど`今月` シートと同じです
 
 ![last_month_sample](./images/last_month_sample.png)
 
-#### 月集計
+### 月集計
 
 `月集計` シートは `家計簿補正` シートを元に月ごとの集計結果を算出しています
 
 ![monthly_aggregation_sample](./images/monthly_aggregation_sample.png)
 
-#### 設定
+### 設定
 
 `設定` シートはLINE BOTで入力テンプレートを取得する際に使用するシートとなります  
 詳しくはLINE BOTの方で説明します
 
 ![setting_sample](./images/setting_sample.png)
 
-### LINE BOT
+## LINE BOT
 
 LINE BOT画面の下部のメニューを押すことによりいろいろな機能を使用することができます  
 表示される内容についてはGoogleスプレッドシートの `今月` シートの内容を通知するようになっています
 
-#### 科目毎の結果
+### 科目毎の結果
 
 上の段の左の `科目毎の結果` をクリックすると科目選択のボタンメニュー上に表示されます  
 科目のボタンをクリックするとその科目の今月の結果を確認することができます
@@ -79,19 +79,19 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 
 ![line_food_expenses_chart](./images/line_food_expenses_chart.png)
 
-#### 今月の支出状況
+### 今月の支出状況
 
 上の段の真ん中の `今月の支出状況` をクリックすると今月の使用状況が表示されます
 
 ![line_this_month_status](./images/line_this_month_status.png)
 
-#### 家計簿へ
+### 家計簿へ
 
 上の段の右の `家計簿へ` をクリックすると `今月` シートへのリンクが表示されます
 
 ![line_household_account_book_link](./images/line_household_account_book_link.png)
 
-#### 入力
+### 入力
 
 下の段の左の `入力` をクリックすると入力用のテンプレートが表示されます  
 このテンプレートの一覧はGoogleスプレッドシートの `設定` シートに設定されている `入力テンプレート` から表示されます
@@ -108,7 +108,7 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 
 ![line_input2](./images/line_input2.png)
 
-#### 固定費入力
+### 固定費入力
 
 下の段の真ん中の `固定費入力` をクリックすると固定費入力用のテンプレートが表示されます  
 このテンプレートの一覧はGoogleスプレッドシートの `設定` シートに設定されている `固定費入力テンプレート` から表示されます
@@ -122,7 +122,7 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 入力テンプレート名をクリックするとGoogleフォームへのURLが表示されます 
 基本的に `入力` メニューの機能と一緒で対象が固定費になっているだけです
 
-#### ヘルプ
+### ヘルプ
 
 下の段の右の `ヘルプ` をクリックするとこのLINE BOTの使い方が表示されます  
 メニューを使わず話しかける時はヘルプに書かれている通りにするとLINE BOTが答えてくれます
