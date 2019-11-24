@@ -33,7 +33,7 @@ function doSummaryPost() {
   copyForm();
 
   // LineにPostする
-  var message = buildMessages(summaryMessage());
+  var message = buildMessage(summaryMessage());
   UrlFetchApp.fetch(Config.LinePushUrl, createPushRequest(message));
 
   // 成功のステータスを返す
