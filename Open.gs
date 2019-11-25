@@ -26,7 +26,7 @@ function copyForm() {
   
   // Googleフォームの参照先シートへコピーする先のRangeを取得
   var referenceSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('家計簿補正');
-  var referenceLastRow = referenceSheet.getLastRow() == 1 ? 2 : referenceSheet.getLastRow();  
+  var referenceLastRow = referenceSheet.getLastRow();
   var referenceRange = referenceSheet.getRange(targetRange);
 
   Logger.log('参照先シートの最終行：' + referenceLastRow);
@@ -38,10 +38,6 @@ function copyForm() {
   Logger.log('コピー処理が実行されたよ');
   googleFormRange.copyTo(referenceRange, { contentsOnly: true });
   
-  // 日付補正の列を最終行までコピーする前に一番最初の値に日付け補正用の関数をセットする
-  // ※ヘッダー以外を削除した状態だと正しく動作しないため
-  referenceSheet.getRange('G2').setValue('=IF(C2="","",DATE(YEAR(C2),MONTH(C2),1))');
-
   // 日付補正の列を最終行までコピーする
   var correctionCopyRange = referenceSheet.getRange('G' + (referenceLastRow + 1) + ':G' + googleFormLastRow);
   var correctionRange = referenceSheet.getRange('G' + referenceLastRow);
