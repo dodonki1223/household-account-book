@@ -13,7 +13,7 @@ Icons make by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flat
 Googleフォームは家計簿にデータを登録するために使用します  
 入力したデータはGoogleスプレッドシートへと格納されていきます
 
-![google_form_sample](./images/google_form_sample.png)
+![google_form_sample](./images/overview/google_form/google_form_sample.png)
 
 ## Googleスプレッドシート
 
@@ -23,7 +23,7 @@ Googleスプレッドシートではいくつかのシートがあります
 
 `フォームの回答` シートではGoogleフォームから入力されたデータを格納します
 
-![input_data_sample](./images/input_data_sample.png)
+![input_data_sample](./images/overview/google_spread_sheet/input_data_sample.png)
 
 ### 家計簿補正
 
@@ -31,33 +31,33 @@ Googleスプレッドシートではいくつかのシートがあります
 日の入力データを元にどの月に入力されたかを判断しています  
 日付補正列が追加されていてそこで判断をしています
 
-![input_data_correction_sample](./images/input_data_correction_sample.png)
+![input_data_correction_sample](./images/overview/google_spread_sheet/input_data_correction_sample.png)
 
 ### 今月
 
 `今月` シートは `家計簿補正` シートを元に今月の支出を科目ごとまとめたシートになります
 
-![this_month_sample](./images/this_month_sample.png)
+![this_month_sample](./images/overview/google_spread_sheet/this_month_sample.png)
 
 ### 先月
 
 `先月` シートは `家計簿補正` シートを元に先月の支出を科目ごとまとめたシートになります  
 `今月` シートとの違いは `今月料金予測` 、`先月費差異` の項目がない、グラフが無いになります。ほんとんど`今月` シートと同じです
 
-![last_month_sample](./images/last_month_sample.png)
+![last_month_sample](./images/overview/google_spread_sheet/last_month_sample.png)
 
 ### 月集計
 
 `月集計` シートは `家計簿補正` シートを元に月ごとの集計結果を算出しています
 
-![monthly_aggregation_sample](./images/monthly_aggregation_sample.png)
+![monthly_aggregation_sample](./images/overview/google_spread_sheet/monthly_aggregation_sample.png)
 
 ### 設定
 
 `設定` シートはLINE BOTで入力テンプレートを取得する際に使用するシートとなります  
 詳しくはLINE BOTの方で説明します
 
-![setting_sample](./images/setting_sample.png)
+![setting_sample](./images/overview/google_spread_sheet/setting_sample.png)
 
 ## LINE BOT
 
@@ -69,55 +69,55 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 上の段の左の `科目毎の結果` をクリックすると科目選択のボタンメニュー上に表示されます  
 科目のボタンをクリックするとその科目の今月の結果を確認することができます
 
-![line_choose_subject1](./images/line_choose_subject1.png)
+![line_choose_subject1](./images/overview/line_bot/line_choose_subject1.png)
 
 画像では食費の結果を確認している所です
 
-![line_choose_subject2](./images/line_choose_subject2.png)
+![line_choose_subject2](./images/overview/line_bot/line_choose_subject2.png)
 
 グラフの設定をしている場合はリンクが表示されクリックすると下記のように表示されます
 
-![line_food_expenses_chart](./images/line_food_expenses_chart.png)
+![line_food_expenses_chart](./images/overview/line_bot/line_food_expenses_chart.png)
 
 ### 今月の支出状況
 
 上の段の真ん中の `今月の支出状況` をクリックすると今月の使用状況が表示されます
 
-![line_this_month_status](./images/line_this_month_status.png)
+![line_this_month_status](./images/overview/line_bot/line_this_month_status.png)
 
 ### 家計簿へ
 
 上の段の右の `家計簿へ` をクリックすると `今月` シートへのリンクが表示されます
 
-![line_household_account_book_link](./images/line_household_account_book_link.png)
+![line_household_account_book_link](./images/overview/line_bot/line_household_account_book_link.png)
 
 ### 入力
 
 下の段の左の `入力` をクリックすると入力用のテンプレートが表示されます  
 このテンプレートの一覧はGoogleスプレッドシートの `設定` シートに設定されている `入力テンプレート` から表示されます
 
-![lien_input1](./images/lien_input1.png)
+![lien_input1](./images/overview/line_bot/lien_input1.png)
 
 入力テンプレート例
 
-![line_setting_sheet_input_template](./images/line_setting_sheet_input_template.png)
+![line_setting_sheet_input_template](./images/overview/line_bot/line_setting_sheet_input_template.png)
 
 入力テンプレート名をクリックするとGoogleフォームへのURLが表示されます  
 
 テンプレート名の `昼食` を選択した場合は入力者が `どどんき` 、日が `2019-11-23` 、科目が `食費` 、備考が `昼食` で入力された状態のGoogleフォームへのURLが表示されます
 
-![line_input2](./images/line_input2.png)
+![line_input2](./images/overview/line_bot/line_input2.png)
 
 ### 固定費入力
 
 下の段の真ん中の `固定費入力` をクリックすると固定費入力用のテンプレートが表示されます  
 このテンプレートの一覧はGoogleスプレッドシートの `設定` シートに設定されている `固定費入力テンプレート` から表示されます
 
-![line_fixed_cost_input1](./images/line_fixed_cost_input1.png)
+![line_fixed_cost_input1](./images/overview/line_bot/line_fixed_cost_input1.png)
 
 入力テンプレート例
 
-![line_setting_sheet_fixed_cost_input_template](./images/line_setting_sheet_fixed_cost_input_template.png)
+![line_setting_sheet_fixed_cost_input_template](./images/overview/line_bot/line_setting_sheet_fixed_cost_input_template.png)
 
 入力テンプレート名をクリックするとGoogleフォームへのURLが表示されます 
 基本的に `入力` メニューの機能と一緒で対象が固定費になっているだけです
@@ -127,13 +127,7 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 下の段の右の `ヘルプ` をクリックするとこのLINE BOTの使い方が表示されます  
 メニューを使わず話しかける時はヘルプに書かれている通りにするとLINE BOTが答えてくれます
 
-![line_help](./images/line_help.png)
-
-
-
-
-
-
+![line_help](./images/overview/line_bot/line_help.png)
 
 
 # 環境構築
@@ -142,39 +136,66 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 
 画像のような感じでGoogleフォームを作成します
 
-![google_form_sample](./images/google_form.png)
+![google_form](./images/google_form.png)
+
+### 入力者のリストを設定
+
+夫婦などで管理する場合に入力者を設定するとよいでしょう  
+独り身の自分は自分の名前だけ設定しています
+
+### 科目のリストを設定
 
 科目は下記のようなリストで作ると良いでしょう  
-特に決まりは無いので好きに作ってもらってよいです。あくまでこれは一例です
+特に決まりは無いので好きに作ってもらってよいです  
+※変更する場合は一部プログラムを修正する必要があります
 
-- 食費
-- 日用品
-- 医療費
-- 水道光熱費
-- 交通費
-- 通信費
-- 保険料
-- 住居費
-- 交際費
-- 洋服代
-- 娯楽費
-- 雑費
+- 通常科目
+  - 食費
+  - 日用品
+  - 医療費
+  - 交際費
+  - 洋服代
+  - 娯楽費
+  - 雑費
+- 固定費
+  - 住居費
+  - 借金返済
+  - 通信費
+  - 保険料
+  - 水道光熱費
+  - 交通費
+- 収入科目
+  - 給与
+  - 雑収入
+
+![google_form_subject_list](./images/google_form_subject_list.png)
 
 ## Googleスプレッドシートを作成する
 
-### Googleフォームの回答結果を受け取るシートを作成する
+Googleスプレッドシート内に作成するシートは下記の通りです
+
+1. フォームの回答
+2. 家計簿補正
+3. 今月
+4. 先月
+5. 月集計
+6. 設定
+
+### フォームの回答シートを作成
 
 Googleフォームの回答結果を書き出すGoogleスプレッドシートを作成します  
 Googleフォーム作成画面の回答内のGoogleスプレッドシートのアイコンをクリックすることで作成することができます
 
-![google_form_to_spread_sheet_create_sample](./images/google_form_to_spread_sheet_create.png)
+![google_form_to_spread_sheet_create](./images/google_form_to_spread_sheet_create.png)
 
 作成すると自動的にGoogleスプレッドシートが表示されます  
-Sheet名を `フォームの回答` に変更しておいてください
+Sheet名を `フォームの回答` に変更しておいてください  
 
-![google_spread_sheet_initial_sample](./images/google_spread_sheet_initial.png)
+![google_spread_sheet_initial](./images/google_spread_sheet_initial.png)
 
-### Googleフォームの回答結果を補正するシートを作成する
+この段階でGoogleスプレッドシートも自動で作成されます
+
+### 家計簿補正シートを作成
 
 新しくシートを作成しシート名は `家計簿補正` にしてください  
 そのシートには下記のように値をセットしておいてください
@@ -185,33 +206,35 @@ Sheet名を `フォームの回答` に変更しておいてください
 
 下記のようになっていればOKです
 
-![google_spread_sheet_correction_sample](./images/google_spread_sheet_correction.png)
+![google_spread_sheet_correction](./images/google_spread_sheet_correction.png)
 
 ### 家計簿のスクリプトをGoogleスプレッドシートに反映させる
 
-下記のファイルをスクリプトエディタにて追加してください
+下記のファイルをスクリプトエディタにて追加してください  
+`_Config.gs` ファイルは `Config.gs` にリネームしてください
 
-| ファイル名                                                                                 | 説明                                       |
-|:-------------------------------------------------------------------------------------------|:-------------------------------------------|
-| [Bot.gs](https://github.com/dodonki1223/household-account-book/blob/master/Bot.gs)         | LINEにメッセージを送る機能                 |
-| [Chart.gs](https://github.com/dodonki1223/household-account-book/blob/master/Chart.gs)     | グラフ機能を提供する                       |
-| [Config.gs](https://github.com/dodonki1223/household-account-book/blob/master/Config.gs)   | 家計簿の設定ファイル                       |
-| [Message.gs](https://github.com/dodonki1223/household-account-book/blob/master/Message.gs) | メッセージを作成する機能                   |
-| [Open.gs](https://github.com/dodonki1223/household-account-book/blob/master/Open.gs)       | 最新状態を家計簿補正シートに反映させる機能 |
-| [Sheet.gs](https://github.com/dodonki1223/household-account-book/blob/master/Sheet.gs)     | シートからデータを取得する機能             |
+| ファイル名                                                                                           | 説明                                           |
+|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------|
+| [Bot.gs](https://github.com/dodonki1223/household-account-book/blob/master/Bot.gs)                   | LINEにメッセージを送る機能                     |
+| [Chart.gs](https://github.com/dodonki1223/household-account-book/blob/master/Chart.gs)               | グラフ機能を提供する                           |
+| [Message.gs](https://github.com/dodonki1223/household-account-book/blob/master/Message.gs)           | メッセージを作成する機能                       |
+| [Open.gs](https://github.com/dodonki1223/household-account-book/blob/master/Open.gs)                 | 最新状態を家計簿補正シートに反映させる機能     |
+| [SettingSheet.gs](https://github.com/dodonki1223/household-account-book/blob/master/SettingSheet.gs) | LINE BOT用の設定シート                         |
+| [Sheet.gs](https://github.com/dodonki1223/household-account-book/blob/master/Sheet.gs)               | シートからデータを取得する機能                 |
+| [Tool.gs](https://github.com/dodonki1223/household-account-book/blob/master/Tool.gs)                 | 家計簿で使用する汎用的なメソッドをまとめたもの |
+| [_Config.gs](https://github.com/dodonki1223/household-account-book/blob/master/Config.gs)            | 家計簿の設定ファイル                           |
 
-### Googleフォームを使って回答する
+### GoogleフォームとGoogleスプレッドシートが連携されているか確認する
 
 作成したGoogleフォームを使って回答してみます  
 回答結果がフォームの回答シートに追加されていることを確認しましょう
 
-![google_form_answer_sample](./images/google_form_answer.png)
+![google_spread_sheet_answer](./images/google_spread_sheet_answer.png)
 
-### 家計簿補正シートに回答結果を反映させる
-
+家計簿補正シートに回答結果を反映させるため  
 追加機能メニューの `フォームの回答データをコピー` をクリックしてください
 
-![answer_copy_sample](./images/answer_copy.png)
+![google_spread_sheet_answer_copy](./images/google_spread_sheet_answer_copy.png)
 
 無事、回答データがコピーされました
 
