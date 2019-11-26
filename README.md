@@ -429,18 +429,28 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 
 ![graph_release](./images/environment/google_spread_sheet/graph_release.png)
 
+## 先月シートを作成
 
+`今月` シートをコピーしシート名を `先月` にしてください  
+コピーし終わったら下記作業を行ってください
 
+- `先月費差異` 行の削除（必要ないので削除）
+- グラフの削除（必要ないので削除）
+- U5の `差` の値に `-1` をセットしてください
 
+これで `先月` シートの作成は完了です
 
-
-
-
-## 一旦、ウェブアプリケーションとして公開する
+## Googleスプレッドシートをウェブアプリケーションとして公開する
 
 スクリプトエディタからウェブアプリケーションとして公開します
 
-![release_web_application_sample](./images/release_web_application.png)
+![release_web_application_1](./images/environment/google_spread_sheet/release_web_application_1.png)
+
+![release_web_application_2](./images/environment/google_spread_sheet/release_web_application_2.png)
+
+`Current web app URL` はLINE BOTと連携で使用するURL（ `LINE BOTに設定するWebhook URL` ）なのでコピーしておいてください
+
+![release_web_application_3](./images/environment/google_spread_sheet/release_web_application_3.png)
 
 ## LINE BOTの作成
 
@@ -448,10 +458,10 @@ LINEのエンジニアの方が書かれている記事を參考にMessaging API
 
 - [LINEのBot開発 超入門（前編） ゼロから応答ができるまで - Qiita](https://qiita.com/nkjm/items/38808bbc97d6927837cd)  
 
-LINEのアクセストークンが必要なのでメモしておいて下さい。  
+`LINEのアクセストークンが必要` なのでメモしておいて下さい  
 `BOT`の作成は必要ないので作成しなくて大丈夫です。`BOT` 本体はGoogleスプレッドシートになります
 
-`Webhook URL` の接続確認だけしておいてください
+`Webhook URL` に Googleスプレッドシートをウェブアプリケーションとして公開した時の `Current web app URL` のURLを設定して接続確認してください  
 
 ## 設定情報をセットする
 
