@@ -465,6 +465,123 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 | 16  | 2020/12/01 | =SUM(`$S16:$T16`) | =SUM(`$F16:$L16`) | =SUM(`$M16:$R16`) | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A16`,'家計簿補正'`!$D$2:$D$30992`,`F$1`) | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A16`,'家計簿補正'`!$D$2:$D$30992`,`S$1`) | …… |
 | 17  | 年合計     | =SUM(B5:B16)      | =SUM(C5:C16)      | =SUM(D5:D16)      | =SUM(F5:F16)                                                                                                    | …… | =SUM(S5:S16)                                                                                                 | …… |
 
+### 設定シートを作成
+
+画像のような形で設定シートを作成します
+
+![setting_sample](./images/overview/google_spread_sheet/setting_sample.png)
+
+#### フォーム項目IDの設定を行う
+
+下記のような感じの表を作成します
+
+|     | A                  | B     |  C              |
+|:---:|:-------------------|:-----:|:---------------:|
+|  1  | フォーム項目ID設定 | 項目  | 項目ID          |
+|  2  |                    | 日    | entry.xxxxxxxxx |
+|  3  |                    | 科目  | entry.xxxxxxxxx |
+|  4  |                    | 金額  | entry.xxxxxxxxx |
+|  5  |                    | 備考  | entry.xxxxxxxxx |
+
+家計簿回答用のGoogleフォーム画面にて下記ブックマークレットを実行し入力項目のIDを取得し設定シートに反映させます  
+
+```javascript
+javascript: (() => {
+  const inputNameList = ['入力者', '日', '科目', '金額', '備考'];
+  const ids = new Set();
+  Array.prototype.forEach.call(document.querySelectorAll('input'), function (elem) {
+  　if ( elem.name.indexOf('entry') != -1){
+      if (elem.name.indexOf('_') != -1) {
+          let place = elem.name.indexOf('_');
+          ids.add(elem.name.substring(0, place));
+      } else {
+        ids.add(elem.name);
+      }
+    }
+  });
+  const idsArray = Array.from(ids);
+  let message = '';
+  inputNameList.forEach((name, index) => {
+      message += name + '：' + idsArray[index] + '\n';
+  });
+  alert(message);
+})();
+```
+
+実行結果
+
+![setting_input_id](./images/environment/google_spread_sheet/setting_input_id.png)
+
+先程、作成した表に表示されているIDをセットしてください  
+下記のような画像の感じで設定してください
+
+![input_id_table](./images/environment/google_spread_sheet/input_id_table.png)
+
+#### 通常科目の入力テンプレートの設定を行う
+
+下記のような感じの表を作成します
+
+|     | E                | F   |  G              |  H     | I    | J     | K     | L     |
+|:---:|:-----------------|:---:|:---------------:|:------:|:----:|:-----:|:-----:|:-----:|
+|  1  | 入力テンプレート | ID  | テンプレート名  | 入力者 |  日  | 科目  | 金額  | 備考  |
+|  2  |                  |  1  |                 |        |      |       |       |       |
+|  3  |                  |  2  |                 |        |      |       |       |       |
+|  4  |                  |  3  |                 |        |      |       |       |       |
+|  5  |                  |  4  |                 |        |      |       |       |       |
+|  6  |                  |  5  |                 |        |      |       |       |       |
+|  7  |                  |  6  |                 |        |      |       |       |       |
+|  8  |                  |  7  |                 |        |      |       |       |       |
+|  9  |                  |  8  |                 |        |      |       |       |       |
+| 10  |                  |  9  |                 |        |      |       |       |       |
+| 11  |                  | 10  |                 |        |      |       |       |       |
+| 12  |                  | 11  |                 |        |      |       |       |       |
+| 13  |                  | 12  |                 |        |      |       |       |       |
+| 14  |                  | 13  |                 |        |      |       |       |       |
+
+下記のような画像の感じで設定してください
+
+![variable_cost_template_table](./images/environment/google_spread_sheet/variable_cost_template_table.png)
+
+#### 固定費科目の入力テンプレートの設定を行う
+
+下記のような感じの表を作成します
+
+|     | N                      | O   |  P              |  Q     | R    | S     | T     | U     |
+|:---:|:-----------------------|:---:|:---------------:|:------:|:----:|:-----:|:-----:|:-----:|
+|  1  | 固定費入力テンプレート | ID  | テンプレート名  | 入力者 |  日  | 科目  | 金額  | 備考  |
+|  2  |                        |  1  |                 |        |      |       |       |       |
+|  3  |                        |  2  |                 |        |      |       |       |       |
+|  4  |                        |  3  |                 |        |      |       |       |       |
+|  5  |                        |  4  |                 |        |      |       |       |       |
+|  6  |                        |  5  |                 |        |      |       |       |       |
+|  7  |                        |  6  |                 |        |      |       |       |       |
+|  8  |                        |  7  |                 |        |      |       |       |       |
+|  9  |                        |  8  |                 |        |      |       |       |       |
+| 10  |                        |  9  |                 |        |      |       |       |       |
+| 11  |                        | 10  |                 |        |      |       |       |       |
+| 12  |                        | 11  |                 |        |      |       |       |       |
+| 13  |                        | 12  |                 |        |      |       |       |       |
+| 14  |                        | 13  |                 |        |      |       |       |       |
+
+下記のような画像の感じで設定してください
+
+![fixed_cost_template_table](./images/environment/google_spread_sheet/fixed_cost_template_table.png)
+
+#### 日付けの指定について
+
+日付の欄で今日の日付けを設定したい時は下記関数を使用して設定してください
+
+```
+=nowDate()
+```
+
+今月の特定日を設定したい時は下記関数を使用して設定してください  
+下記の例だと今月の25日が設定されます
+
+```
+=nowDateForSpecifiedDay(25)
+```
+
 ### Googleスプレッドシートをウェブアプリケーションとして公開する
 
 スクリプトエディタからウェブアプリケーションとして公開します
