@@ -467,7 +467,8 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 
 ### 設定シートを作成
 
-画像のような形で設定シートを作成します
+新しくシートを作成しシート名は `設定` にしてください  
+画像のような形で設定シートを作成していきます
 
 ![setting_sample](./images/overview/google_spread_sheet/setting_sample.png)
 
