@@ -167,7 +167,7 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
   - 給与
   - 雑収入
 
-![google_form_subject_list](./images/environment/google_form/google_form_subject_list.png)
+<img alt="google_form_subject_list" src="./images/environment/google_form/google_form_subject_list.png" width="500px">
 
 ## Googleスプレッドシートを作成する
 
@@ -587,13 +587,13 @@ javascript: (() => {
 
 スクリプトエディタからウェブアプリケーションとして公開します
 
-![release_web_application_1](./images/environment/google_spread_sheet/release_web_application_1.png)
+<img alt="release_web_application_1" src="./images/environment/google_spread_sheet/release_web_application_1.png" width="500px">
 
-![release_web_application_2](./images/environment/google_spread_sheet/release_web_application_2.png)
+<img alt="release_web_application_2" src="./images/environment/google_spread_sheet/release_web_application_2.png" width="500px">
 
 `Current web app URL` はLINE BOTと連携で使用するURL（ `LINE BOTに設定するWebhook URL` ）なのでコピーしておいてください
 
-![release_web_application_3](./images/environment/google_spread_sheet/release_web_application_3.png)
+<img alt="release_web_application_3" src="./images/environment/google_spread_sheet/release_web_application_3.png" width="500px">
 
 ## LINE BOTの作成
 
@@ -670,7 +670,7 @@ var _ChartList = {
 `グラフのURL` にはグラフを公開を押した時に表示されるURLをセットしてください  
 グラフが必要のない人はセットしなくてもよいです
 
-![graph_url](./images/environment/linebot/graph_url.png)
+<img alt="graph_url" src="./images/environment/linebot/graph_url.png" width="500px">
 
 `再度、ウェブアプリケーションとして公開してください`
 
