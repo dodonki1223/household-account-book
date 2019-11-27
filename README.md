@@ -129,7 +129,6 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 
 ![line_help](./images/overview/line_bot/line_help.png)
 
-
 # 環境構築
 
 ## Googleフォームを作成する
@@ -191,7 +190,7 @@ Googleフォーム作成画面の回答内のGoogleスプレッドシートの�
 作成すると自動的にGoogleスプレッドシートが表示されます  
 Sheet名を `フォームの回答` に変更しておいてください  
 
-![google_spread_sheet_initial](./images/environment/google_spread_sheet/google_spread_sheet_initial.png)
+![google_spread_sheet_initial](./images/environment/google_spread_sheet/initial.png)
 
 この段階でGoogleスプレッドシートも自動で作成されます
 
@@ -206,7 +205,7 @@ Sheet名を `フォームの回答` に変更しておいてください
 
 下記のようになっていればOKです
 
-![google_spread_sheet_correction](./images/environment/google_spread_sheet/google_spread_sheet_correction.png)
+![google_spread_sheet_correction](./images/environment/google_spread_sheet/correction.png)
 
 ### 家計簿のスクリプトをGoogleスプレッドシートに反映させる
 
@@ -229,12 +228,12 @@ Sheet名を `フォームの回答` に変更しておいてください
 作成したGoogleフォームを使って回答してみます  
 回答結果がフォームの回答シートに追加されていることを確認しましょう
 
-![google_spread_sheet_answer](./images/environment/google_spread_sheet/google_spread_sheet_answer.png)
+![google_spread_sheet_answer](./images/environment/google_spread_sheet/answer.png)
 
 家計簿補正シートに回答結果を反映させるため  
 追加機能メニューの `フォームの回答データをコピー` をクリックしてください
 
-![google_spread_sheet_answer_copy](./images/environment/google_spread_sheet/google_spread_sheet_answer_copy.png)
+![google_spread_sheet_answer_copy](./images/environment/google_spread_sheet/answer_copy.png)
 
 `承認が必要` というウィンドウが出た時は 
 - `続行` ボタンをクリック
@@ -244,7 +243,7 @@ Sheet名を `フォームの回答` に変更しておいてください
 
 無事、回答データがコピーされました
 
-![google_spread_sheet_answer_copy_result](./images/environment/google_spread_sheet/google_spread_sheet_answer_copy_result.png)
+![google_spread_sheet_answer_copy_result](./images/environment/google_spread_sheet/answer_copy_result.png)
 
 これで家計簿ファイルを開くたび、LINE BOTを実行するたびに家計簿補正シートが更新されるようになります  
 なぜかAndroidでGoogleスプレッドシートを開くと`onOpen`関数が実行されないようです:thinking:
@@ -254,11 +253,11 @@ Sheet名を `フォームの回答` に変更しておいてください
 新しくシートを作成しシート名は `今月` にしてください  
 作成するシートの中身は下記画像のような感じです
 
-![google_spread_sheet_this_month_sample](./images/environment/google_spread_sheet/google_spread_sheet_this_month_sample.png)
+![google_spread_sheet_this_month_sample](./images/environment/google_spread_sheet/this_month_sample.png)
 
 #### T、U列に値をセット
 
-![google_spread_sheet_this_month_settings](./images/environment/google_spread_sheet/google_spread_sheet_this_month_settings.png)
+![google_spread_sheet_this_month_settings](./images/environment/google_spread_sheet/this_month_settings.png)
 
 下記のように値をセットし上記画像のようになればOKです
 
@@ -436,6 +435,35 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 - U5の `差` の値に `-1` をセットしてください
 
 これで `先月` シートの作成は完了です
+
+### 月集計シートを作成
+
+新しくシートを作成しシート名は `月集計` にしてください  
+作成するシートの中身は下記画像のような感じです  
+
+![monthly_aggregation_sample](./images/overview/google_spread_sheet/monthly_aggregation_sample.png)
+
+下記のような表と同じ値になっていればOKです
+
+|     | A          | B                 | C                 | D                 | F                                                                                                               | …… | S                                                                                                            | …… |
+|:---:|:----------:|:-----------------:|:-----------------:|:-----------------:|:---------------------------------------------------------------------------------------------------------------:|:----:|:------------------------------------------------------------------------------------------------------------:|:----:|
+|  1  |            | 月収入            | 月支出            | 月固定費支出      | 食費                                                                                                            | …… | 給与                                                                                                         | …… |
+|  2  | 2019/11/01 | =SUM(`$S2:$T2`)   | =SUM(`$F2:$L2`)   | =SUM(`$M2:$R2`)   | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A2`,'家計簿補正'`!$D$2:$D$30992`,`F$1`)  | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A2`,'家計簿補正'`!$D$2:$D$30992`,`S$1`)  | …… |
+|  3  | 2019/12/01 | =SUM(`$S3:$T3`)   | =SUM(`$F3:$L3`)   | =SUM(`$M3:$R3`)   | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A3`,'家計簿補正'`!$D$2:$D$30992`,`F$1`)  | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A3`,'家計簿補正'`!$D$2:$D$30992`,`S$1`)  | …… |
+|  4  | 年合計     | =SUM(B2:B3)       | =SUM(C2:C3)       | =SUM(D2:D3)       | =SUM(F2:F3)                                                                                                     | …… | =SUM(S2:S3)                                                                                                  | …… |
+|  5  | 2020/01/01 | =SUM(`$S5:$T5`)   | =SUM(`$F5:$L5`)   | =SUM(`$M5:$R5`)   | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A5`,'家計簿補正'`!$D$2:$D$30992`,`F$1`)  | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A5`,'家計簿補正'`!$D$2:$D$30992`,`S$1`)  | …… |
+|  6  | 2020/02/01 | =SUM(`$S6:$T6`)   | =SUM(`$F6:$L6`)   | =SUM(`$M6:$R6`)   | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A6`,'家計簿補正'`!$D$2:$D$30992`,`F$1`)  | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A6`,'家計簿補正'`!$D$2:$D$30992`,`S$1`)  | …… |
+|  7  | 2020/03/01 | =SUM(`$S7:$T7`)   | =SUM(`$F7:$L7`)   | =SUM(`$M7:$R7`)   | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A7`,'家計簿補正'`!$D$2:$D$30992`,`F$1`)  | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A7`,'家計簿補正'`!$D$2:$D$30992`,`S$1`)  | …… |
+|  8  | 2020/04/01 | =SUM(`$S8:$T8`)   | =SUM(`$F8:$L8`)   | =SUM(`$M8:$R8`)   | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A8`,'家計簿補正'`!$D$2:$D$30992`,`F$1`)  | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A8`,'家計簿補正'`!$D$2:$D$30992`,`S$1`)  | …… |
+|  9  | 2020/05/01 | =SUM(`$S9:$T9`)   | =SUM(`$F9:$L9`)   | =SUM(`$M9:$R9`)   | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A9`,'家計簿補正'`!$D$2:$D$30992`,`F$1`)  | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A9`,'家計簿補正'`!$D$2:$D$30992`,`S$1`)  | …… |
+| 10  | 2020/06/01 | =SUM(`$S10:$T10`) | =SUM(`$F10:$L10`) | =SUM(`$M10:$R10`) | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A10`,'家計簿補正'`!$D$2:$D$30992`,`F$1`) | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A10`,'家計簿補正'`!$D$2:$D$30992`,`S$1`) | …… |
+| 11  | 2020/07/01 | =SUM(`$S11:$T11`) | =SUM(`$F11:$L11`) | =SUM(`$M11:$R11`) | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A11`,'家計簿補正'`!$D$2:$D$30992`,`F$1`) | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A11`,'家計簿補正'`!$D$2:$D$30992`,`S$1`) | …… |
+| 12  | 2020/08/01 | =SUM(`$S12:$T12`) | =SUM(`$F12:$L12`) | =SUM(`$M12:$R12`) | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A12`,'家計簿補正'`!$D$2:$D$30992`,`F$1`) | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A12`,'家計簿補正'`!$D$2:$D$30992`,`S$1`) | …… |
+| 13  | 2020/09/01 | =SUM(`$S13:$T13`) | =SUM(`$F13:$L13`) | =SUM(`$M13:$R13`) | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A13`,'家計簿補正'`!$D$2:$D$30992`,`F$1`) | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A13`,'家計簿補正'`!$D$2:$D$30992`,`S$1`) | …… |
+| 14  | 2020/10/01 | =SUM(`$S14:$T14`) | =SUM(`$F14:$L14`) | =SUM(`$M14:$R14`) | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A14`,'家計簿補正'`!$D$2:$D$30992`,`F$1`) | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A14`,'家計簿補正'`!$D$2:$D$30992`,`S$1`) | …… |
+| 15  | 2020/11/01 | =SUM(`$S15:$T15`) | =SUM(`$F15:$L15`) | =SUM(`$M15:$R15`) | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A15`,'家計簿補正'`!$D$2:$D$30992`,`F$1`) | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A15`,'家計簿補正'`!$D$2:$D$30992`,`S$1`) | …… |
+| 16  | 2020/12/01 | =SUM(`$S16:$T16`) | =SUM(`$F16:$L16`) | =SUM(`$M16:$R16`) | =-1*SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A16`,'家計簿補正'`!$D$2:$D$30992`,`F$1`) | …… | =SUMIFS('家計簿補正'`!$E$2:$E$30992`,'家計簿補正'`!$G$2:$G$30992`,`$A16`,'家計簿補正'`!$D$2:$D$30992`,`S$1`) | …… |
+| 17  | 年合計     | =SUM(B5:B16)      | =SUM(C5:C16)      | =SUM(D5:D16)      | =SUM(F5:F16)                                                                                                    | …… | =SUM(S5:S16)                                                                                                 | …… |
 
 ### Googleスプレッドシートをウェブアプリケーションとして公開する
 
