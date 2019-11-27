@@ -13,7 +13,7 @@ Icons make by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flat
 Googleフォームは家計簿にデータを登録するために使用します  
 入力したデータはGoogleスプレッドシートへと格納されていきます
 
-<img alt="google_form_sample" src="./images/overview/google_form/google_form_sample.png">
+<img alt="google_form_sample" src="./images/overview/google_form/google_form_sample.png" width="500px">
 
 ## Googleスプレッドシート
 
@@ -69,11 +69,11 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 上の段の左の `科目毎の結果` をクリックすると科目選択のボタンメニュー上に表示されます  
 科目のボタンをクリックするとその科目の今月の結果を確認することができます
 
-<img alt="line_choose_subject1" src="./images/overview/line_bot/line_choose_subject1.png">
+<img alt="line_choose_subject1" src="./images/overview/line_bot/line_choose_subject1.png" width="500px">
 
 画像では食費の結果を確認している所です
 
-<img alt="line_choose_subject2" src="./images/overview/line_bot/line_choose_subject2.png">
+<img alt="line_choose_subject2" src="./images/overview/line_bot/line_choose_subject2.png" width="500px">
 
 グラフの設定をしている場合はリンクが表示されクリックすると下記のように表示されます
 
@@ -83,20 +83,20 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 
 上の段の真ん中の `今月の支出状況` をクリックすると今月の使用状況が表示されます
 
-<img alt="line_this_month_status" src="./images/overview/line_bot/line_this_month_status.png">
+<img alt="line_this_month_status" src="./images/overview/line_bot/line_this_month_status.png" width="500px">
 
 ### 家計簿へ
 
 上の段の右の `家計簿へ` をクリックすると `今月` シートへのリンクが表示されます
 
-<img alt="line_household_account_book_link" src="./images/overview/line_bot/line_household_account_book_link.png">
+<img alt="line_household_account_book_link" src="./images/overview/line_bot/line_household_account_book_link.png" width="500px">
 
 ### 入力
 
 下の段の左の `入力` をクリックすると入力用のテンプレートが表示されます  
 このテンプレートの一覧はGoogleスプレッドシートの `設定` シートに設定されている `入力テンプレート` から表示されます
 
-<img alt="lien_input1" src="./images/overview/line_bot/lien_input1.png">
+<img alt="lien_input1" src="./images/overview/line_bot/lien_input1.png" width="500px">
 
 入力テンプレート例
 
@@ -106,14 +106,14 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 
 テンプレート名の `昼食` を選択した場合は入力者が `どどんき` 、日が `2019-11-23` 、科目が `食費` 、備考が `昼食` で入力された状態のGoogleフォームへのURLが表示されます
 
-<img alt="line_input2" src="./images/overview/line_bot/line_input2.png">
+<img alt="line_input2" src="./images/overview/line_bot/line_input2.png" width="500px">
 
 ### 固定費入力
 
 下の段の真ん中の `固定費入力` をクリックすると固定費入力用のテンプレートが表示されます  
 このテンプレートの一覧はGoogleスプレッドシートの `設定` シートに設定されている `固定費入力テンプレート` から表示されます
 
-<img alt="line_fixed_cost_input1" src="./images/overview/line_bot/line_fixed_cost_input1.png">
+<img alt="line_fixed_cost_input1" src="./images/overview/line_bot/line_fixed_cost_input1.png" width="500px">
 
 入力テンプレート例
 
@@ -127,7 +127,7 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 下の段の右の `ヘルプ` をクリックするとこのLINE BOTの使い方が表示されます  
 メニューを使わず話しかける時はヘルプに書かれている通りにするとLINE BOTが答えてくれます
 
-<img alt="line_help" src="./images/overview/line_bot/line_help.png">
+<img alt="line_help" src="./images/overview/line_bot/line_help.png" width="500px">
 
 # 環境構築
 
@@ -135,7 +135,7 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 
 画像のような感じでGoogleフォームを作成します
 
-<img alt="google_form" src="./images/environment/google_form/google_form.png">
+<img alt="google_form" src="./images/environment/google_form/google_form.png" width="500px">
 
 ### 入力者のリストを設定
 
@@ -680,7 +680,7 @@ LINEに作成したBOTを友だち登録して実際に動作するか試して�
 作成したLINE BOTに `食費` と入力して話しかけてみてください  
 下記のような感じでGoogleスプレッドシートの結果が返ってきたら成功です
 
-<img alt="operation_check" src="./images/environment/linebot/operation_check.png">
+<img alt="operation_check" src="./images/environment/linebot/operation_check.png" width="500px">
 
 ### LINE BOTにメニューを追加する
 
@@ -825,4 +825,4 @@ LINE BOTを確認しメニューが表示されていればOKです
 
 LINE BOTにメニューが追加されていて、メニューを押して動作するような完成です！
 
-<img alt="operation_check_2" src="./images/environment/linebot/operation_check_2.png">
+<img alt="operation_check_2" src="./images/environment/linebot/operation_check_2.png" width="500px">
