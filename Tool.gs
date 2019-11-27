@@ -20,6 +20,16 @@ function nowDate() {
 }
 
 /**
+ * 指定日付けの文字列を(YYYY-MM-DD)の形式で返す
+ * @return {String} (YYYY-MM-DD)の形式の日付け文字列
+ */
+function specifiedDate(date) {
+  const now = new Date(date);
+
+  return "" + now.getFullYear() + "-" + padZero(now.getMonth() + 1) + "-" + padZero(now.getDate());
+}
+
+/**
  * 今月の指定日付けの文字列を(YYYY-MM-DD)の形式で返す
  * @param {Number} [number] - 数値
  * @return {String} (YYYY-MM-DD)の形式の日付け文字列
