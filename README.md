@@ -249,11 +249,14 @@ Sheet名を `フォームの回答` に変更しておいてください
 これで家計簿ファイルを開くたび、LINE BOTを実行するたびに家計簿補正シートが更新されるようになります  
 なぜかAndroidでGoogleスプレッドシートを開くと`onOpen`関数が実行されないようです:thinking:
 
-## 今月シートを作成
+### 今月シートを作成
 
 新しくシートを作成しシート名は `今月` にしてください  
+作成するシートの中身は下記画像のような感じです
 
-### T、U列に値をセット
+![google_spread_sheet_this_month_sample](./images/environment/google_spread_sheet/google_spread_sheet_this_month_sample.png)
+
+#### T、U列に値をセット
 
 ![google_spread_sheet_this_month_settings](./images/environment/google_spread_sheet/google_spread_sheet_this_month_settings.png)
 
@@ -291,9 +294,7 @@ Sheet名を `フォームの回答` に変更しておいてください
   </tr>
 </table>
 
-### A〜R列に値をセット
-
-#### A列（日付列）
+#### A列（日付列）に値をセット
 
 A列には日付けを求める関数をセットします  
 月によっては31日までないものもあるのでその対応で日付けを取得できなかったら空になるようになっています
@@ -302,7 +303,7 @@ A列には日付けを求める関数をセットします
 =IF(DAY(DATE($S$2,$S$3,ROW()-1))=ROW()-1,DATE($S$2,$S$3,ROW()-1),"")
 ```
 
-#### B列（曜日列）
+#### B列（曜日列）に値をセット
 
 B列には日付けから曜日を求める関数をセットします  
 例としては下記のような値です
@@ -311,7 +312,7 @@ B列には日付けから曜日を求める関数をセットします
 =TEXT(A2,"dddd")
 ```
 
-#### C〜I列（通常科目列）、K〜P列（固定費科目列）
+#### C〜I列（通常科目列）、K〜P列（固定費科目列）に値をセット
 
 C〜I列、K〜P列には家計簿補正シートから日付けごと、科目ごとの集計を計算する関数をセットします  
 例としては下記のような値です
@@ -320,7 +321,7 @@ C〜I列、K〜P列には家計簿補正シートから日付けごと、科目�
 =IF(`$A2`="","",SUMIFS('家計簿補正'`!$E$2`:`$E$30992`,'家計簿補正'`!$C$2:$C$30992`,`$A2`,'家計簿補正'`!$D$2:$D$30992`,`C$1`))
 ```
 
-#### J列（通常科目の合計列）
+#### J列（通常科目の合計列）に値をセット
 
 J列には通常科目の合計値を求める関数をセットします  
 例としては下記のような値です
@@ -329,7 +330,7 @@ J列には通常科目の合計値を求める関数をセットします
 =IF($A2="","",SUM(C2:I2))
 ```
 
-#### Q列（固定費科目の合計列）
+#### Q列（固定費科目の合計列）に値をセット
 
 Q列には固定費科目の合計値を求める関数をセットします 
 例としては下記のような値です
@@ -338,7 +339,7 @@ Q列には固定費科目の合計値を求める関数をセットします
 =IF($A2="","",SUM(K2:P2))
 ```
 
-#### R列（総合計列）
+#### R列（総合計列）に値をセット
 
 R列には通常科目の合計と固定費科目の合計値をセットしてください  
 例としては下記のような値です
@@ -347,7 +348,7 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 =J2+Q2
 ```
 
-#### 合計行
+#### 合計行に値をセット
 
 合計行には１ヶ月の合計値を求める関数をセットしてください  
 例としては下記のような値です
@@ -356,7 +357,7 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 =SUM(C1:C32)
 ```
 
-#### １日平均行
+#### １日平均行に値をセット
 
 １日平均行には１日に使用している平均値を求める関数をセットしてください  
 `$U$4` には月初から現在までの日数が求められています  
@@ -366,7 +367,7 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 =SUM(C2:C32)/$U$4 
 ```
 
-#### １週間平均行
+#### １週間平均行に値をセット
 
 １週間平均行には１週間で使用している平均値を求める関数をセットしてください  
 実際には `１日平均 x 7` をしているだけです
@@ -376,7 +377,7 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 =C34 * 7
 ```
 
-#### 今月料金予測行
+#### 今月料金予測行に値をセット
 
 今月料金予測行には今月の合計値の予測値を求める関数をセットしてください  
 実際には `１日平均 x 月数` をしているだけです
@@ -386,7 +387,7 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 =C34*DAY(EOMONTH(TODAY(),0))
 ```
 
-#### 先月費差異行
+#### 先月費差異行に値をセット
 
 先月費差異行には先月の合計値と今月料金予測の値を差し引きし先月に比べて今月がどうかを求める関数をセットしてください  
 この状態だと `先月` シートはまだ作成していないので正しい値はでません  
@@ -413,11 +414,7 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 | 36  |                                                                              | 今月料金予測     | =C34 * DAY(EOMONTH(TODAY(),0))                                                                                                | …… | =J34 * DAY(EOMONTH(TODAY(),0)) | =K34 * DAY(EOMONTH(TODAY(),0))                                                                                                | …… | =Q34 * DAY(EOMONTH(TODAY(),0)) | =R34 * DAY(EOMONTH(TODAY(),0)) |
 | 37  |                                                                              | 先月費差異       | =C36-'先月'!C33                                                                                                               | …… | =J36-'先月'!J33                | =K36-'先月'!K33                                                                                                               | …… | =Q36-'先月'!Q33                | =R36-'先月'!R33                |
 
-画像のような表示になっていればOKです
-
-![google_spread_sheet_this_month_sample](./images/environment/google_spread_sheet/google_spread_sheet_this_month_sample.png)
-
-### グラフを追加する
+#### グラフを追加する
 
 下記のような感じで科目ごとのグラフを追加します  
 全部設定する必要はなく、自分が欲しいものだけ追加すると良いでしょう
@@ -429,7 +426,7 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 
 ![graph_release](./images/environment/google_spread_sheet/graph_release.png)
 
-## 先月シートを作成
+### 先月シートを作成
 
 `今月` シートをコピーしシート名を `先月` にしてください  
 コピーし終わったら下記作業を行ってください
@@ -440,7 +437,7 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 
 これで `先月` シートの作成は完了です
 
-## Googleスプレッドシートをウェブアプリケーションとして公開する
+### Googleスプレッドシートをウェブアプリケーションとして公開する
 
 スクリプトエディタからウェブアプリケーションとして公開します
 
@@ -454,50 +451,230 @@ R列には通常科目の合計と固定費科目の合計値をセットして�
 
 ## LINE BOTの作成
 
-LINEのエンジニアの方が書かれている記事を參考にMessaging APIの作成を行って下さい。
+### 新規チャンネルの作成を行う
+
+LINEのエンジニアの方が書かれている記事を参考にMessaging APIの作成を行って下さい
 
 - [LINEのBot開発 超入門（前編） ゼロから応答ができるまで - Qiita](https://qiita.com/nkjm/items/38808bbc97d6927837cd)  
 
 `LINEのアクセストークンが必要` なのでメモしておいて下さい  
 `BOT`の作成は必要ないので作成しなくて大丈夫です。`BOT` 本体はGoogleスプレッドシートになります
 
-`Webhook URL` に Googleスプレッドシートをウェブアプリケーションとして公開した時の `Current web app URL` のURLを設定して接続確認してください  
+`Webhook URL` に Googleスプレッドシートをウェブアプリケーションとして公開した時の `Current web app URL` のURLを設定し `検証` ボタンをクリックして成功することを確認しておいてください
 
-## 設定情報をセットする
+![communication_check](./images/environment/linebot/communication_check.png)
 
-LINEのアクセストークン、今月出費シートのURL、GoogleフォームのURLを `Config.gs` ファイルに設定します
+### Googleスプレッドシートに設定情報を追加する
+
+Googleスプレッドシートのスクリプトエディタから `Config.gs` を開き設定情報を追加します  
+下記コード内の `LineAccessToken` , `LinePushNotificationDestination` , `HouseholdAccountBookUrl` , `FormUrl` , `グラフのURL` の設定行います  
 
 ```javascript
-// LineAccessToken         ：LINE developersのメッセージ送受信設定に記載のアクセストークン
-// LinePostUrl             ：LINE Messaging APIのURL
-// HouseholdAccountBookUrl ：家計簿のURL
-// FormUrl                 ：家計簿入力用のURL
-var config = {
-  LineAccessToken         : 'Lineのアクセストークン',
-  LinePostUrl             : 'https://api.line.me/v2/bot/message/reply',
-  HouseholdAccountBookUrl : 'Googleスプレッドシートの今月の支出シートURL',
-  FormUrl                 : 'GoogleフォームのURL'
+// LineAccessToken                 ：LINE developersのメッセージ送受信設定に記載のアクセストークン
+// LineReplyUrl                    ：LINE Messaging APIのURL（LINEからの応答用）
+// LinePushUrl                     ：LINE Messaging APIのURL（LINEに対してPOSTする用）
+// LinePushNotificationDestination : LineのUserID
+// HouseholdAccountBookUrl         ：家計簿のURL
+// FormUrl                         ：家計簿入力用のURL
+var _Config = {
+  LineAccessToken                 : 'Lineのアクセストークン',
+  LineReplyUrl                    : 'https://api.line.me/v2/bot/message/reply',
+  LinePushUrl                     : 'https://api.line.me/v2/bot/message/push',
+  LinePushNotificationDestination : 'LineのUserID',
+  HouseholdAccountBookUrl         : 'Googleスプレッドシートの今月の支出シートURL',
+  FormUrl                         : 'GoogleフォームのURL'
 };
-```
 
-グラフのURLを `Chart.gs` ファイルに設定します
-
-```javascript
 // グラフの存在する項目のURLリスト
 // Base64で取得する方法もあるがめんどいので今回は固定値で対応する
 // https://developers.google.com/apps-script/reference/charts
-var ChartList = {
+var _ChartList = {
   食費  : '食費グラフURL',
   日用品: '日用品のURL',
-  交通費: '交通費のURL',
-  通信費: '通信費のURL',
+  交際費: '交際費のURL',
   洋服代: '洋服代のURL',
-  娯楽費: '娯楽費のURL'
+  娯楽費: '娯楽費のURL',
+  交通費: '交通費のURL',
+  合計  : '合計のURL'
 }
 ```
 
-再度、ウェブアプリケーションとして公開すれば完成です
+#### LineAccessToken
 
-# その他
+`LineAccessToken` にはチャンネルアクセストークンを設定してください
 
-いくつかその他にも機能がありますが、細かい機能についてはソースを読んでください
+![channel_access_token](./images/environment/linebot/channel_access_token.png)
+
+#### LinePushNotificationDestination
+
+`LinePushNotificationDestination` にはユーザーIDをセットしてください
+
+![line_user_id](./images/environment/linebot/line_user_id.png)
+
+#### HouseholdAccountBookUrl
+
+`HouseholdAccountBookUrl` には `今月` シートを開いてそのURLをセットしてください
+
+#### FormUrl
+
+`FormUrl` には 家計簿回答用のGoogleフォームを開いてそのURLをセットしてください
+
+#### グラフのURL
+
+`グラフのURL` にはグラフを公開を押した時に表示されるURLをセットしてください  
+グラフが必要のない人はセットしなくてもよいです
+
+![graph_url](./images/environment/linebot/graph_url.png)
+
+`再度、ウェブアプリケーションとして公開してください`
+
+### LINE BOTの動作確認
+
+LINEに作成したBOTを友だち登録して実際に動作するか試してみます  
+作成したLINE BOTに `食費` と入力して話しかけてみてください  
+下記のような感じでGoogleスプレッドシートの結果が返ってきたら成功です
+
+![operation_check](./images/environment/linebot/operation_check.png)
+
+### LINE BOTにメニューを追加する
+
+いちいち文字を打つのがめんどくさいのでメニューを登録しボタンを押すだけで家計簿の機能が使えるようにします  
+公式サイトの下記ドキュメント参考に追加していきます
+
+- [リッチメニューを使う](https://developers.line.biz/ja/docs/messaging-api/using-rich-menus/)
+
+#### リッチメニューを登録する
+
+curlコマンドを使用してリッチメニューをチャンネルに追加します  
+この作業はリッチメニューを作成するだけでLINE BOTに紐付いているわけではありません
+
+```shell
+curl -X POST https://api.line.me/v2/bot/richmenu \
+    -H 'Authorization: Bearer {チャンネルアクセストークン}' \
+    -H 'Content-Type: application/json' \
+    -d \
+    '{
+        "size": {
+            "width": 2500,
+            "height": 1686
+        },
+        "selected": true,
+        "name": "ProductionMenu",
+        "chatBarText": "メニュー",
+        "areas": [
+            {
+                "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 834,
+                    "height": 843
+                },
+                "action": {
+                    "type": "message",
+                    "text": "科目結果"
+                }
+            },
+            {
+                "bounds": {
+                    "x": 834,
+                    "y": 0,
+                    "width": 834,
+                    "height": 843
+                },
+                "action": {
+                    "type": "message",
+                    "text": "今月の支出状況"
+                }
+            },
+            {
+                "bounds": {
+                    "x": 1668,
+                    "y": 0,
+                    "width": 832,
+                    "height": 843
+                },
+                "action": {
+                    "type": "message",
+                    "text": "家計簿"
+                }
+            },
+            {
+                "bounds": {
+                    "x": 0,
+                    "y": 843,
+                    "width": 834,
+                    "height": 843
+                },
+                "action": {
+                    "type": "message",
+                    "text": "入力"
+                }
+            },
+            {
+                "bounds": {
+                    "x": 834,
+                    "y": 843,
+                    "width": 834,
+                    "height": 843
+                },
+                "action": {
+                    "type": "message",
+                    "text": "固定費入力"
+                }
+            },
+            {
+                "bounds": {
+                    "x": 1668,
+                    "y": 843,
+                    "width": 832,
+                    "height": 843
+                },
+                "action": {
+                    "type": "message",
+                    "text": "ヘルプ"
+                }
+            }
+        ]
+    }'
+```
+
+実行に成功するとリッチメニューのIDが表示されるのでコピーしておきます  
+
+```shell
+{"richMenuId":"richmenu-xxxxxxxxxxxxxxxxxxxxx"}
+```
+
+#### リッチメニューに画像をアップロードする
+
+作成したリッチメニューに画像を紐付けを行います  
+
+リッチメニューに紐付ける画像をダウンロードします
+
+```shell
+git clone https://github.com/dodonki1223/household-account-book.git
+cd household-account-book/menu/
+```
+
+画像の登録を行います
+
+```shell
+curl -X POST https://api.line.me/v2/bot/richmenu/リッチメニューのID/content \
+    -H 'Authorization: Bearer {チャンネルアクセストークン}' \
+    -H 'Content-Type: image/png' \
+    -T menu.png
+```
+
+#### LINE BOTにリッチメニューを紐付ける
+
+LINE BOTに作成したリッチメニューの紐付けを行います
+
+```shell
+curl -X POST https://api.line.me/v2/bot/user/ユーザーID/richmenu/リッチメニューのID \
+    -H 'Authorization: Bearer {チャンネルアクセストークン}'
+```
+
+LINE BOTを確認しメニューが表示されていればOKです
+
+### LINE BOTの動作確認２
+
+LINE BOTに追加されたメニューを押して動作するようなら完成です！
