@@ -25,19 +25,37 @@ function doPost(e) {
 }
 
 /**
- * 今日の結果のsummaryをLINE BOTにPostする
+ * LINE BOTにPostする
+ * @param {Array} [messages] - POSTするメッセージ情報
  * @return {JSON} Postが成功した情報をJSON形式で返す
  */
-function doSummaryPost() {
+function linePost(messages) {
   // Googleフォームで回答されたデータを参照用のシートにコピーする（最新の状態を反映させるため）
   copyForm();
 
   // LineにPostする
-  var message = buildMessage(summaryMessage());
-  UrlFetchApp.fetch(Config.LinePushUrl, createPushRequest(message));
-
+  UrlFetchApp.fetch(Config.LinePushUrl, createPushRequest(messages));
+  
   // 成功のステータスを返す
   return ContentService.createTextOutput(JSON.stringify({'content': 'post ok'})).setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * 今日の結果のsummaryをLINE BOTにPostする
+ * @return {JSON} Postが成功した情報をJSON形式で返す
+ */
+function doSummaryPost() {
+  var messages = buildMessage(summaryMessage());
+  return linePost(messages);
+}
+
+/**
+ * 今月の最終結果をLINE BOTにPostする
+ * @return {JSON} Postが成功した情報をJSON形式で返す
+ */
+function doIncomeAndExpenditureForThisMonthPost() {
+  var messages = buildMessages(incomeAndExpenditureForThisMonthMessage());
+  return linePost(messages);
 }
 
 /**

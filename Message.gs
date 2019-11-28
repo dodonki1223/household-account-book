@@ -58,26 +58,48 @@ function helpMessage() {
  * @return {String} 今日の結果通知用のメッセージ
  */
 function summaryMessage() {
-  var maxLength = 0;
-  SubjectList.VariableCost.forEach(function(subject){
-    if (maxLength < subject.length) maxLength = subject.length;
-  });
-  // 科目名の文字の長さを一定にする（足りていないものの前にはスペースを追加する）
-  var addedSpaceSubjects = SubjectList.VariableCost.map(function(subject){
-    while(subject.length < maxLength){
-      subject = "　" + subject;
-    };
-    return subject;
-  });
-
+  var addedSpaceSubjects = addedSpaceArray(SubjectList.VariableCost)
   var message = '今月の支出状況を通知するよー🌝\n\n'; 
   addedSpaceSubjects.forEach(function (subject) {
     var index = getTargetSubjectIndex(subject.replace('　', ''));
     var sumValue = numberToJPYFormat(getNowStatusValues(index)[0][0]);
     message += subject + '：' + sumValue + '\n'
   });
-  
+
   return message.slice(0, -1);
+}
+
+/**
+ * 今月の最終結果通知用のメッセージを返す
+ * @return {Array} 今月の最終結果通知用のメッセージを返す
+ */
+function incomeAndExpenditureForThisMonthMessage() {
+  var aggregateMessage = '今月の最終結果を通知するよー🌝\n\n';
+  var aggregateSubjectList = addedSpaceArray(AggregateSubjectList.Aggregate);
+
+  aggregateSubjectList.forEach(function (subject, index) {
+    aggregateMessage += subject + '：' + numberToJPYFormat(AggregateValues.Aggregate[index]) + '\n'
+  });
+  
+  var messages = [];
+  messages.push(aggregateMessage.slice(0, -1));
+
+  var detailMessage = '詳細でガンス😇\n\n';
+  var detailSubjectList = AggregateSubjectList.VariableCost;
+  detailSubjectList = detailSubjectList.concat(AggregateSubjectList.FixedCost);
+  detailSubjectList = detailSubjectList.concat(AggregateSubjectList.Income);
+  detailSubjectList = addedSpaceArray(detailSubjectList);
+  
+  var detailValues = AggregateValues.VariableCost;
+  detailValues = detailValues.concat(AggregateValues.FixedCost);
+  detailValues = detailValues.concat(AggregateValues.Income);
+
+  detailSubjectList.forEach(function (subject, index) {
+    detailMessage += subject + '：' + numberToJPYFormat(detailValues[index]) + '\n'
+  });
+  messages.push(detailMessage.slice(0, -1));
+
+  return messages;
 }
 
 /**

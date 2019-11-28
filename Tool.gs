@@ -114,3 +114,34 @@ function buildInputFormTemplateUrl(values) {
          '&' + buildInputFormTemplateParam(InputFormIds.Amount, values[4]) + 
          '&' + buildInputFormTemplateParam(InputFormIds.Note, values[5]);
 }
+
+/**
+ * 配列内の文字でもっとも長い文字列の長さを取得
+ * @param {Array} [array] - 配列
+ * @return {Number} もっとも長い文字列の長さ
+ */
+function getMaxLengthFromArray(array) {
+  var maxLength = 0;
+  array.forEach(function(value){
+    if (maxLength < value.length) maxLength = value.length;
+  });
+  
+  return maxLength;
+}
+
+/**
+ * 配列内の文字を一律一番長いものに合わせる
+ * @param {Array} [array] - 配列
+ * @return {Array} 文字の長さを合わせた配列
+ */
+function addedSpaceArray(array) {
+  var maxLength = getMaxLengthFromArray(array);
+  var addedSpaceArray = array.map(function(value){
+    while(value.length < maxLength){
+      value = "　" + value;
+    };
+    return value;
+  });
+
+  return addedSpaceArray;
+}
