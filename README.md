@@ -608,7 +608,7 @@ LINEのエンジニアの方が書かれている記事を参考にMessaging API
 
 `Webhook URL` に Googleスプレッドシートをウェブアプリケーションとして公開した時の `Current web app URL` のURLを設定し `検証` ボタンをクリックして成功することを確認しておいてください
 
-![communication_check](./images/environment/linebot/communication_check.png)
+<img alt="communication_check" src="./images/environment/linebot/communication_check.png" width="800px">
 
 ### Googleスプレッドシートに設定情報を追加する
 
@@ -649,13 +649,13 @@ var _ChartList = {
 
 `LineAccessToken` にはチャンネルアクセストークンを設定してください
 
-![channel_access_token](./images/environment/linebot/channel_access_token.png)
+<img alt="channel_access_token" src="./images/environment/linebot/channel_access_token.png" width="800px">
 
 #### LinePushNotificationDestination
 
 `LinePushNotificationDestination` にはユーザーIDをセットしてください
 
-![line_user_id](./images/environment/linebot/line_user_id.png)
+<img alt="line_user_id" src="./images/environment/linebot/line_user_id.png" width="800px">
 
 #### HouseholdAccountBookUrl
 
