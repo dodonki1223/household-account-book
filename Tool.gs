@@ -10,34 +10,72 @@ function padZero(number) {
 }
 
 /**
- * 今日日付けの文字列を(YYYY-MM-DD)の形式で返す
- * @return {String} (YYYY-MM-DD)の形式の日付け文字列
+ * 日付け文字列を作成し返す
+ * @param {Date} [date] - 日付けオブジェクト
+ * @param {String} [delimiter] - 日付けの間の区切り文字
+ * @return {String} (YYYY区切り文字MM区切り文字DD)形式の日付文字列
  */
-function nowDate() {
-  const now = new Date();
-
-  return "" + now.getFullYear() + "-" + padZero(now.getMonth() + 1) + "-" + padZero(now.getDate());
+function buildDateString(date, delimiter) {
+  var delimiterString = (delimiter == undefined) ? '-' : delimiter;
+  return "" + date.getFullYear() + delimiterString + padZero(date.getMonth() + 1) + delimiterString + padZero(date.getDate());
 }
 
 /**
- * 指定日付けの文字列を(YYYY-MM-DD)の形式で返す
- * @return {String} (YYYY-MM-DD)の形式の日付け文字列
+ * 今日日付けの文字列を(YYYY区切り文字MM区切り文字DD)の形式で返す
+ * @param {String} [delimiter] - 区切り文字
+ * @return {String} (YYYY区切り文字MM区切り文字DD)の形式の日付け文字列
  */
-function specifiedDate(date) {
+function nowDate(delimiter) {
+  const now = new Date();
+
+  return buildDateString(now, delimiter);
+}
+
+/**
+ * 指定日付けの文字列を(YYYY区切り文字MM区切り文字DD)の形式で返す
+ * @param {String} [delimiter] - 日付けの間の区切り文字
+ * @return {String} (YYYY区切り文字MM区切り文字DD)形式の日付文字列
+ */
+function specifiedDate(date, delimiter) {
   const now = new Date(date);
 
-  return "" + now.getFullYear() + "-" + padZero(now.getMonth() + 1) + "-" + padZero(now.getDate());
+  return buildDateString(now, delimiter);
 }
 
 /**
- * 今月の指定日付けの文字列を(YYYY-MM-DD)の形式で返す
+ * 今月の指定日付けの文字列を(YYYY区切り文字MM区切り文字DD)の形式で返す
  * @param {Number} [number] - 数値
- * @return {String} (YYYY-MM-DD)の形式の日付け文字列
+ * @return {String} (YYYY区切り文字MM区切り文字DD)の形式の日付け文字列
  */
-function nowDateForSpecifiedDay(number) {
+function nowDateForSpecifiedDay(number, delimiter) {
   const now = new Date();
+  now.setDate(number);
 
-  return "" + now.getFullYear() + "-" + padZero(now.getMonth() + 1) + "-" + padZero(number);
+  return buildDateString(now, delimiter);
+}
+
+/**
+ * 月初の日付文字列を(YYYY区切り文字MM区切り文字DD)の形式で返す
+ * @return {String} (YYYY区切り文字MM区切り文字DD)の形式の日付け文字列
+ */
+function beginningOfMonthDate(delimiter) {
+  const date = new Date();
+  date.setDate(1);
+  
+  return buildDateString(date, delimiter);
+}
+
+/**
+ * 月末の日付文字列を(YYYY区切り文字MM区切り文字DD)の形式で返す
+ * @return {String} (YYYY区切り文字MM区切り文字DD)の形式の日付け文字列
+ */
+function endOfMonthDate(delimiter) {
+  const date = new Date();
+  date.setDate(1);
+  date.setMonth(date.getMonth() + 1);
+  date.setDate(0);
+  
+  return buildDateString(date, delimiter);
 }
 
 /**

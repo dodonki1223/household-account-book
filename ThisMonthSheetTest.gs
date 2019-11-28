@@ -1,5 +1,5 @@
-// Sheet.gsのテストを全て実行する
-function TestSheet() {
+// ThisMonthSheet.gsのテストを全て実行する
+function TestThisMonthSheet() {
   TestSubjectList();
   TestIsExistsSubject();
   TestGetTargetSubjectIndex();
