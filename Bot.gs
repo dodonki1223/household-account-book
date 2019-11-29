@@ -51,11 +51,16 @@ function doSummaryPost() {
 
 /**
  * 今月の最終結果をLINE BOTにPostする
- * @return {JSON} Postが成功した情報をJSON形式で返す
+ * @return {JSON} Postが成功した情報をJSON形式で返す、月末の時は何もしない
  */
 function doIncomeAndExpenditureForThisMonthPost() {
-  var messages = buildMessages(incomeAndExpenditureForThisMonthMessage());
-  return linePost(messages);
+  // 現在日付＋１の日付が１日の場合は月末なので下記のような条件になっている
+  var date = new Date();
+  date.setDate(date.getDate() +1);
+  if (date.getDate() === 1){
+    var messages = buildMessages(incomeAndExpenditureForThisMonthMessage());
+    return linePost(messages);    
+  };
 }
 
 /**
