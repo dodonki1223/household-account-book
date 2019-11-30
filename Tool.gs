@@ -79,6 +79,18 @@ function endOfMonthDate(delimiter) {
 }
 
 /**
+ * 月末か？
+ * @return {Boolean} 
+ */
+function isEndOfMonth() {
+  var date = new Date();
+  date.setDate(date.getDate() +1);
+
+  // 現在日付＋１の日付が１日の場合は月末と判断する
+  return date.getDate() === 1;
+}
+
+/**
  * 数値を日本円の表示フォーマットに変換する
  * 少数点以下は切り捨て、３桁区切りでカンマを追加する
  * 例：5666.345 → 5,666円
