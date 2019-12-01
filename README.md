@@ -81,7 +81,7 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 
 ### 今月の支出状況
 
-上の段の真ん中の `今月の支出状況` をクリックすると今月の使用状況が表示されます
+上の段の真ん中の `今月の支出状況` をクリックすると今月の使用状況が表示されます（ただし固定費項目は除く）
 
 <img alt="line_this_month_status" src="./images/overview/line_bot/line_this_month_status.png" width="500px">
 
@@ -823,6 +823,40 @@ LINE BOTを確認しメニューが表示されていればOKです
 
 ### LINE BOTの動作確認２
 
-LINE BOTにメニューが追加されていて、メニューを押して動作するような完成です！
+LINE BOTにメニューが追加されていて、メニューを押して動作するようならLINE BOTの設定は完了です
 
 <img alt="operation_check_2" src="./images/environment/linebot/operation_check_2.png" width="500px">
+
+## 自動通知設定
+
+Googleスプレッドシートのトリガーを使用して特定の時間に家計簿の結果を通知させることができます  
+編集メニューの `現在のプロジェクトのトリガー` をクリックしてください
+
+![to_trigger](./images/environment/notification/to_trigger.png)
+
+`現在のプロジェクトのトリガー` をクリックするとトリガー設定画面へ遷移します
+
+![trigger_screen](./images/environment/notification/trigger_screen.png)
+
+### 今月の支出状況を通知させる
+
+メニューの `今月の支出状況` の機能を毎日、特定の時間に実行されるように設定します 
+`トリガーを追加` ボタンをクリックし下記の画像のような設定し保存してください
+
+![summary_post](./images/environment/notification/summary_post.png)
+
+上記設定で毎日23時〜24時の間に今月の支出状況がLINE BOTに通知されるようになります
+
+### 今月の最終結果を通知させる
+
+`月集計` シートの今月の結果を月末に通知するよう設定します  
+`トリガーを追加` ボタンをクリックし下記の画像のような設定し保存してください
+
+![income_and_expenditure_for_this_month](./images/environment/notification/income_and_expenditure_for_this_month.png)
+
+上記設定で毎月の最終日に23時〜24時の間に今月の支出状況がLINE BOTに通知されるようになります  
+`doIncomeAndExpenditureForThisMonthPost` メソッド内で月末かどうか判断し月末の時だけLINE BOTにPostするような処理になっているため、毎日実行する設定にしています  
+
+実行されると下記のような通知になります  
+
+<img alt="line_bot_income_and_expenditure_for_this_month" src="./images/environment/notification/line_bot_income_and_expenditure_for_this_month.png" width="500px">
