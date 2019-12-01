@@ -212,16 +212,18 @@ Sheet名を `フォームの回答` に変更しておいてください
 下記のファイルをスクリプトエディタにて追加してください  
 `_Config.gs` ファイルは `Config.gs` にリネームしてください
 
-| ファイル名                                                                                           | 説明                                           |
-|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------|
-| [Bot.gs](https://github.com/dodonki1223/household-account-book/blob/master/Bot.gs)                   | LINEにメッセージを送る機能                     |
-| [Chart.gs](https://github.com/dodonki1223/household-account-book/blob/master/Chart.gs)               | グラフ機能を提供する                           |
-| [Message.gs](https://github.com/dodonki1223/household-account-book/blob/master/Message.gs)           | メッセージを作成する機能                       |
-| [Open.gs](https://github.com/dodonki1223/household-account-book/blob/master/Open.gs)                 | 最新状態を家計簿補正シートに反映させる機能     |
-| [SettingSheet.gs](https://github.com/dodonki1223/household-account-book/blob/master/SettingSheet.gs) | LINE BOT用の設定シート                         |
-| [Sheet.gs](https://github.com/dodonki1223/household-account-book/blob/master/Sheet.gs)               | シートからデータを取得する機能                 |
-| [Tool.gs](https://github.com/dodonki1223/household-account-book/blob/master/Tool.gs)                 | 家計簿で使用する汎用的なメソッドをまとめたもの |
-| [_Config.gs](https://github.com/dodonki1223/household-account-book/blob/master/Config.gs)            | 家計簿の設定ファイル                           |
+| ファイル名                                                                                                                 | 説明                                           |
+|:---------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|
+| [Bot.gs](https://github.com/dodonki1223/household-account-book/blob/master/Bot.gs)                                         | LINEにメッセージを送る機能                     |
+| [Chart.gs](https://github.com/dodonki1223/household-account-book/blob/master/Chart.gs)                                     | グラフ機能を提供する                           |
+| [Message.gs](https://github.com/dodonki1223/household-account-book/blob/master/Message.gs)                                 | メッセージを作成する機能                       |
+| [MonthlyAggregationSheet.gs](https://github.com/dodonki1223/household-account-book/blob/master/MonthlyAggregationSheet.gs) | 月集計シートからデータを取得する機能           |
+| [Open.gs](https://github.com/dodonki1223/household-account-book/blob/master/Open.gs)                                       | 最新状態を家計簿補正シートに反映させる機能     |
+| [SettingSheet.gs](https://github.com/dodonki1223/household-account-book/blob/master/SettingSheet.gs)                       | LINE BOT用の設定シート                         |
+| [Sheet.gs](https://github.com/dodonki1223/household-account-book/blob/master/Sheet.gs)                                     | シート全体に共通する機能                       |
+| [ThisMonthSheet.gs](https://github.com/dodonki1223/household-account-book/blob/master/ThisMonthSheet.gs)                   | 今月シートからデータを取得する機能             |
+| [Tool.gs](https://github.com/dodonki1223/household-account-book/blob/master/Tool.gs)                                       | 家計簿で使用する汎用的なメソッドをまとめたもの |
+| [_Config.gs](https://github.com/dodonki1223/household-account-book/blob/master/Config.gs)                                  | 家計簿の設定ファイル                           |
 
 ### GoogleフォームとGoogleスプレッドシートが連携されているか確認する
 
