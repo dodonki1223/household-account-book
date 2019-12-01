@@ -589,13 +589,13 @@ javascript: (() => {
 
 スクリプトエディタからウェブアプリケーションとして公開します
 
-<img alt="release_web_application_1" src="./images/environment/google_spread_sheet/release_web_application_1.png" width="500px">
+<img alt="release_web_application_1" src="./images/environment/google_spread_sheet/release_web_application_1.png" width="600px">
 
-<img alt="release_web_application_2" src="./images/environment/google_spread_sheet/release_web_application_2.png" width="500px">
+<img alt="release_web_application_2" src="./images/environment/google_spread_sheet/release_web_application_2.png" width="600px">
 
 `Current web app URL` はLINE BOTと連携で使用するURL（ `LINE BOTに設定するWebhook URL` ）なのでコピーしておいてください
 
-<img alt="release_web_application_3" src="./images/environment/google_spread_sheet/release_web_application_3.png" width="500px">
+<img alt="release_web_application_3" src="./images/environment/google_spread_sheet/release_web_application_3.png" width="600px">
 
 ## LINE BOTの作成
 
@@ -834,7 +834,7 @@ LINE BOTにメニューが追加されていて、メニューを押して動作
 Googleスプレッドシートのトリガーを使用して特定の時間に家計簿の結果を通知させることができます  
 編集メニューの `現在のプロジェクトのトリガー` をクリックしてください
 
-![to_trigger](./images/environment/notification/to_trigger.png)
+<img alt="to_trigger" src="./images/environment/notification/to_trigger.png" width="600px">
 
 `現在のプロジェクトのトリガー` をクリックするとトリガー設定画面へ遷移します
 
