@@ -13,6 +13,9 @@ Icons make by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flat
 | <a href="https://line.me/R/ti/p/%40396dkaje"><img height="36" border="0" alt="友だち追加" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a> | <img height="150" border="0" alt="add_line_bot" src="images/add_line_bot.png"> |
 |:---:|:---:|
 
+- [公開用Googleスプレッドシート](https://docs.google.com/spreadsheets/d/1FfMewj2tTQ7Tlpz_BQwefDUSxiAPWP7dVgVqmQwAG9U/edit?usp=sharing)
+- [公開用Googleフォーム](https://docs.google.com/forms/d/e/1FAIpQLSeRVqiIuaYhUamL8mf-p2Mknj6sQqqv9QBZsdGUPrQomr0SpA/viewform)
+
 ## Googleフォーム
 
 Googleフォームは家計簿にデータを登録するために使用します  
