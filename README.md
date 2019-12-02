@@ -1,4 +1,4 @@
-# サーバーレスで作成する自分だけの最強家計簿
+# サーバーレスで作成する自分だけの最強家計簿BOT
 
 Googleフォーム、Googleスプレッドシート、LINE BOTで管理するサーバーレス家計簿です
 
@@ -7,6 +7,11 @@ Googleフォーム、Googleスプレッドシート、LINE BOTで管理するサ
 Icons make by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/)
 
 # 概要
+
+動作確認用に家計簿BOTを公開しているのでもしよかったら友達登録してみて動作を確認してみてください
+
+| <a href="https://line.me/R/ti/p/%40396dkaje"><img height="36" border="0" alt="友だち追加" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a> | ![add_line_bot.png](images/add_line_bot.png) |
+|:---:|:---:|
 
 ## Googleフォーム
 
@@ -817,8 +822,8 @@ curl -X POST https://api.line.me/v2/bot/richmenu/リッチメニューのID/cont
 LINE BOTに作成したリッチメニューの紐付けを行います
 
 ```shell
-curl -X POST https://api.line.me/v2/bot/user/ユーザーID/richmenu/リッチメニューのID \
-    -H 'Authorization: Bearer {チャンネルアクセストークン}'
+curl -v -X POST https://api.line.me/v2/bot/user/all/richmenu/リッチメニューのID \
+    -H "Authorization: Bearer {チャンネルアクセストークン}"
 ```
 
 LINE BOTを確認しメニューが表示されていればOKです
