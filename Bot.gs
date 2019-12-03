@@ -51,7 +51,8 @@ function doSummaryPost() {
 
 /**
  * 今月の最終結果をLINE BOTにPostする
- * @return {JSON} Postが成功した情報をJSON形式で返す、月末の時は何もしない
+ * 月末以外の時は何もしない
+ * @return {JSON} Postが成功した情報をJSON形式で返す
  */
 function doIncomeAndExpenditureForThisMonthPost() {
   if (!isEndOfMonth()) return;
