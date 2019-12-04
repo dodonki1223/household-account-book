@@ -137,6 +137,20 @@ LINE BOT画面の下部のメニューを押すことによりいろいろな機
 
 <img alt="line_help" src="./images/overview/line_bot/line_help.png" width="500px">
 
+### 通知機能
+
+Googleスプレッドシートのトリガー機能を使用し特定の時間にメッセージを通知させます
+
+#### 今月の支出状況
+
+特定の時間に今月の支出状況を通知させます（ `今月の支出状況` メニューを実行した時と同じものが通知されます）
+
+#### 今月の最終結果
+
+月末に今月の最終結果（月集計シートの内容）を通知させます
+
+<img alt="line_bot_income_and_expenditure_for_this_month" src="./images/environment/notification/line_bot_income_and_expenditure_for_this_month.png" width="500px">
+
 # 環境構築
 
 ## Googleフォームを作成する
@@ -864,7 +878,7 @@ Googleスプレッドシートのトリガーを使用して特定の時間に�
 
 ![income_and_expenditure_for_this_month](./images/environment/notification/income_and_expenditure_for_this_month.png)
 
-上記設定で毎月の最終日に23時〜24時の間に今月の支出状況がLINE BOTに通知されるようになります  
+上記設定で毎月の最終日に23時〜24時の間に今月の最終結果がLINE BOTに通知されるようになります  
 `doIncomeAndExpenditureForThisMonthPost` メソッド内で月末かどうか判断し月末の時だけLINE BOTにPostするような処理になっているため、毎日実行する設定にしています  
 
 実行されると下記のような通知になります  
