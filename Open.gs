@@ -5,8 +5,9 @@ function onOpen() {
     .getActiveSpreadsheet()
     .addMenu('追加機能', [
       {name: 'フォームの回答データをコピー', functionName: 'copyForm'},
+      {name: '回答結果', functionName: 'displayFormDataList'},
     ]);
-    
+
    // フォームのコピー処理を実行
    copyForm();
 }
