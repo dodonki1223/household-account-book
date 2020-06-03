@@ -58,7 +58,7 @@ function doIncomeAndExpenditureForThisMonthPost() {
   if (!isEndOfMonth()) return;
   
   var messages = buildMessages(incomeAndExpenditureForThisMonthMessage());
-  return linePost(messages);    
+  return linePost(messages);
 }
 
 /**
@@ -84,6 +84,8 @@ function convertUserMessageToLineMessage(userMessage) {
     return buildMessages(paymentInfo(userMessage));
   } else if (userMessage === 'ヘルプ') {
     return buildMessage(helpMessage());
+  } else if (userMessage === '最終結果') {
+    return buildMessages(incomeAndExpenditureForThisMonthMessage());
   } else {
     return buildMessage(notExistsMessage());
   }
