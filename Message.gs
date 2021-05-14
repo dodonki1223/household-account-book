@@ -14,7 +14,8 @@ function paymentInfo(subjectName) {
                     '１日の平均：' + numberToJPYFormat(getNowStatusValues(index)[1][0]) + '\n' +
                     '１週間平均：' + numberToJPYFormat(getNowStatusValues(index)[2][0]) + '\n' +
                     '今月の予測：' + numberToJPYFormat(getNowStatusValues(index)[3][0]) + '\n' +
-                    '先月費差異：' + numberToJPYFormat(getNowStatusValues(index)[4][0]) + '\n\n' +
+                    '先月費差異：' + numberToJPYFormat(getNowStatusValues(index)[4][0]) + '\n' +
+                    '今月の残額：' + numberToJPYFormat(getNowStatusValues(index)[5][0]) + '\n\n' +
                     belowMessage;
 
   // 本当は画像送信メッセージを使用したいがグラフの公開URLがCanvasで描かれているため使用出来ず……Orz
@@ -66,7 +67,14 @@ function summaryMessage() {
     message += subject + '：' + sumValue + '\n'
   });
 
-  return message.slice(0, -1);
+  var balanceValue = getSheet('今月').getRange('J38').getValues()[0];
+  var subjectList = SubjectList.VariableCost;
+  subjectList.push('残額');
+  var subjects = addedSpaceArray(SubjectList.VariableCost);
+  var balanceSubject = subjects[subjects.length - 1];
+  message = message + balanceSubject + '：' + numberToJPYFormat(balanceValue);
+
+  return message;
 }
 
 /**

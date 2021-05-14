@@ -14,3 +14,11 @@ function TestPaymentInfo() {
   
   Logger.log('');
 }
+
+function TestSummaryMessage() {
+  Logger.log('今月の支出状況を出力するメソッドのテスト');
+
+  Logger.log(summaryMessage());
+  
+  Logger.log('');
+}
